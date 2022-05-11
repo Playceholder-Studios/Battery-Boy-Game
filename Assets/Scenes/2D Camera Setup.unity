@@ -301,9 +301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a004732edb8ed654aa57ab63bcc28fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCameraTrap: 1
+  isCameraTrap: 0
+  isSizeOfViewPort: 0
   cameraTrapSize: {x: 3, y: 3}
   trackableObject: {fileID: 1058713151}
+  followSpeed: 0.125
 --- !u!1 &1058713149
 GameObject:
   m_ObjectHideFlags: 0
