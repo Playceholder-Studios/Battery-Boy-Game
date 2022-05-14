@@ -11,19 +11,19 @@ public class PlayerController : MonoBehaviour
     /// Momement speed.
     /// </summary>
     [Range(0.0f, 100.0f)]
-    public float moveSpeed = 1.5f;
+    public float moveSpeed = 80.0f;
 
     /// <summary>
     /// Movement smoothing factor.
     /// </summary>
     [Range(0.0f, 1.0f)]
-    public float smoothTime = 0.25f;
+    public float smoothFactor = 0.825f;
     #endregion Public Members
 
     #region Private Members
-    private Vector3 m_inputVector;
-    private Vector3 m_velocity;
-    private BoxCollider2D m_boxCollider2D;
+    private Vector3 m_inputFireVector;
+    private Vector3 m_inputMoveVector;
+    private Rigidbody2D m_rigidbody2D;
     #endregion Private Members
 
     #region Unity Lifecycle Methods
@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        m_inputVector = new Vector3();
-        m_velocity = new Vector3();
-        m_boxCollider2D = GetComponent<BoxCollider2D>();
+        m_inputFireVector = new Vector3();
+        m_inputMoveVector = new Vector3();
+        m_rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -42,24 +42,28 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Calculate target position
-        Vector3 targetPos = transform.position + (m_inputVector * moveSpeed);
+        Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
+    }
 
-        // Calculate ray length according to input direction
-        float rayLength = Vector3.Scale(m_boxCollider2D.bounds.extents, m_inputVector).magnitude;
-
-        // Cast ray in the velocity direction
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_velocity, rayLength);
-        Debug.DrawRay(transform.position, m_velocity.normalized * rayLength, Color.yellow);
-        if (hit.collider != null)
-        {
-            // TODO: Figure this shit out
-        }
-
-        // Update position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, smoothTime);
+    /// <summary>
+    /// FixedUpdate is called 50 times per second.
+    /// </summary>
+    private void FixedUpdate()
+    {
+        // Apply force and apply smoothing factor
+        m_rigidbody2D.AddForce(m_inputMoveVector * moveSpeed);
+        m_rigidbody2D.velocity *= smoothFactor;
     }
     #endregion Unity Lifecycle Methods
+
+    /// <summary>
+    /// Handles messages from the Player->Fire action.
+    /// </summary>
+    /// <param name="value"></param>
+    private void OnFire(InputValue value)
+    {
+        m_inputFireVector = value.Get<Vector2>();
+    }
 
     /// <summary>
     /// Handles messages from the Player->Movement action.
@@ -67,8 +71,6 @@ public class PlayerController : MonoBehaviour
     /// <param name="value"></param>
     private void OnMovement(InputValue value)
     {
-        Vector2 vector = value.Get<Vector2>();
-        m_inputVector.x = vector.x;
-        m_inputVector.y = vector.y;
+        m_inputMoveVector = value.Get<Vector2>();
     }
 }
