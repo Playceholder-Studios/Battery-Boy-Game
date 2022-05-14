@@ -3,30 +3,43 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraTracker2D : MonoBehaviour
 {
+    #region Protected Members
+    /// <summary>
+    /// Toggles whether the camera tracker follows from the center of the 
+    /// <see cref="trackableObject"/> or from the center of the camera trap with the bounds defined by <see cref="cameraTrapSize"/>
+    /// </summary>
     [SerializeField]
     protected bool isCameraTrap;
 
     /// <summary>
-    /// Change the size of the camera trap to be the size of the camera viewport.
+    /// Sets the size of the camera trap to be the size of the camera viewport when enabled.
     /// </summary>
     [SerializeField]
     protected bool isSizeOfViewPort;
 
+    /// <summary>
+    /// The area where the <see cref="trackableObject"/> can move before the camera
+    /// starts following.
+    /// </summary>
     [SerializeField]
     protected Vector2 cameraTrapSize = new Vector2(3, 3);
 
+    /// <summary>
+    /// The object that is going to be followed by the camera tracker.
+    /// </summary>
     [SerializeField]
     protected Transform trackableObject;
 
     /// <summary>
-    /// Approximately the time it will take the camera to reach the target in seconds.
+    /// Approximately the time it will take the camera to reach the target in seconds when following.
     /// The smaller the value, the faster the camera will reach the target.
     /// </summary>
     [SerializeField]
     protected float followSpeed = 0.125f;
+    
+    #endregion
 
     private Bounds cameraTrapBounds;
-
     private Camera cam;
     
     /// <summary>
@@ -35,7 +48,6 @@ public class CameraTracker2D : MonoBehaviour
     /// </summary>
     private Vector3 velocity = Vector3.zero;
 
-    // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -47,7 +59,6 @@ public class CameraTracker2D : MonoBehaviour
         transform.position = new Vector3(cameraTrapBounds.center.x, cameraTrapBounds.center.y, transform.position.z);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isCameraTrap)
