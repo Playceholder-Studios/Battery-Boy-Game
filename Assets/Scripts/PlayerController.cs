@@ -26,17 +26,29 @@ public class PlayerController : MonoBehaviour
     public float smoothFactor = 0.825f;
 
     public GameObject projectile;
+
+    public GameObject currentSkillObject;
+
     #endregion Public Members
 
     #region Private Members
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
-
     private float m_fireRateTimer;
+    private ISkill currentSkill;
     #endregion Private Members
 
     #region Unity Lifecycle Methods
+    private void OnValidate()
+    {
+        // Todo: Maybe change this check to be an attribute instead on in OnValidate
+        if (!currentSkillObject.HasComponent<ISkill>())
+        {
+            currentSkillObject = null;
+        }
+    }
+
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
         m_inputFireVector = new Vector3();
         m_inputMoveVector = new Vector3();
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+        currentSkill = currentSkillObject.GetComponent<ISkill>();
     }
 
     /// <summary>
@@ -73,6 +86,11 @@ public class PlayerController : MonoBehaviour
             m_fireRateTimer = fireRate;
         }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    empRadius.gameObject.SetActive(true);
+        //}
     }
 
     /// <summary>
@@ -102,5 +120,10 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         m_inputMoveVector = value.Get<Vector2>();
+    }
+
+    private void OnSkill(InputValue value)
+    {
+        currentSkill?.Activate();
     }
 }
