@@ -620,6 +620,63 @@ MonoBehaviour:
   cameraTrapSize: {x: 3, y: 3}
   trackableObject: {fileID: 1543398238}
   followSpeed: 0.125
+--- !u!1001 &57136610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1543398238}
+    m_Modifications:
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984008, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984009, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_Name
+      value: EMP
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
 --- !u!1 &62809247
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,6 +7781,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1016164990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4344702397403984009, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+  m_PrefabInstance: {fileID: 57136610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1021528674
 GameObject:
   m_ObjectHideFlags: 0
@@ -13160,7 +13222,7 @@ PrefabInstance:
     - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
       propertyPath: currentSkillObject
       value: 
-      objectReference: {fileID: 4344702397403984009, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      objectReference: {fileID: 1016164990}
     - target: {fileID: 8130137372301275363, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
       propertyPath: m_Name
       value: Simple Player
