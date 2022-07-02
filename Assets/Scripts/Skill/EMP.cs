@@ -7,12 +7,12 @@ public class EMP : Skill
 
     public override void Activate()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     private void Awake()
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,5 +24,6 @@ public class EMP : Skill
             enemy.MoveToTarget(other.transform.position + (dirToMove * strength), 10.0f, true);
             gameObject.SetActive(false);
         }
+
     }
 }
