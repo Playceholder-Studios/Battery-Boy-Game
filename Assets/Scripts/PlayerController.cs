@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     #region Public Members
     /// <summary>
+    /// Fire rate.
+    /// </summary>
+    [Range(0.0f, 10.0f)]
+    public float fireRate = 5.0f;
+
+    /// <summary>
     /// Momement speed.
     /// </summary>
     [Range(0.0f, 100.0f)]
@@ -18,12 +24,16 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [Range(0.0f, 1.0f)]
     public float smoothFactor = 0.825f;
+
+    public GameObject projectile;
     #endregion Public Members
 
     #region Private Members
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
+
+    private float m_fireRateTimer;
     #endregion Private Members
 
     #region Unity Lifecycle Methods
@@ -42,6 +52,26 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (m_inputFireVector != Vector3.zero)
+        {
+            if (m_fireRateTimer > 0)
+            {
+                m_fireRateTimer -= Time.deltaTime;
+            }
+            // Timer reached 0, reset timer and spawn projectile
+            else
+            {
+                GameObject obj = Instantiate(projectile, transform.position + m_inputFireVector, Quaternion.identity);
+                obj.GetComponent<Rigidbody2D>().AddForce(m_inputFireVector * 100);
+
+                m_fireRateTimer = fireRate;
+            }
+        }
+        // Reset fire rate timer
+        else
+        {
+            m_fireRateTimer = fireRate;
+        }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
     }
 
