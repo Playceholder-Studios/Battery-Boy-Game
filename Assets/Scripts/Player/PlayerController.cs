@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     #region Public Members
     /// <summary>
+    /// Fire rate.
+    /// </summary>
+    [Range(0.0f, 10.0f)]
+    public float fireRate = 5.0f;
+
+    /// <summary>
     /// Momement speed.
     /// </summary>
     [Range(0.0f, 100.0f)]
@@ -18,15 +24,31 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [Range(0.0f, 1.0f)]
     public float smoothFactor = 0.825f;
+
+    public GameObject projectile;
+
+    public GameObject currentSkillObject;
+
     #endregion Public Members
 
     #region Private Members
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
+    private float m_fireRateTimer;
+    private ISkill currentSkill;
     #endregion Private Members
 
     #region Unity Lifecycle Methods
+    private void OnValidate()
+    {
+        // Todo: Maybe change this check to be an attribute instead on in OnValidate
+        if (!currentSkillObject.HasComponent<ISkill>())
+        {
+            currentSkillObject = null;
+        }
+    }
+
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -35,6 +57,7 @@ public class PlayerController : MonoBehaviour
         m_inputFireVector = new Vector3();
         m_inputMoveVector = new Vector3();
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+        currentSkill = currentSkillObject.GetComponent<ISkill>();
     }
 
     /// <summary>
@@ -42,7 +65,32 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (m_inputFireVector != Vector3.zero)
+        {
+            if (m_fireRateTimer > 0)
+            {
+                m_fireRateTimer -= Time.deltaTime;
+            }
+            // Timer reached 0, reset timer and spawn projectile
+            else
+            {
+                GameObject obj = Instantiate(projectile, transform.position + m_inputFireVector, Quaternion.identity);
+                obj.GetComponent<Rigidbody2D>().AddForce(m_inputFireVector * 100);
+
+                m_fireRateTimer = fireRate;
+            }
+        }
+        // Reset fire rate timer
+        else
+        {
+            m_fireRateTimer = fireRate;
+        }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    empRadius.gameObject.SetActive(true);
+        //}
     }
 
     /// <summary>
@@ -72,5 +120,10 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         m_inputMoveVector = value.Get<Vector2>();
+    }
+
+    private void OnSkill(InputValue value)
+    {
+        currentSkill?.Activate();
     }
 }
