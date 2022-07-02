@@ -9,7 +9,7 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "98b57e8e-f53b-4541-a12c-33c001bf0dbc",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -18,7 +18,7 @@
                     "name": "Fire",
                     "type": "Value",
                     "id": "9b3490fd-8783-43ec-80c9-81816a64a3f0",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -35,7 +35,7 @@
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
+                    "name": "Keyboard 2D",
                     "id": "99c98cc0-1b74-4044-9517-7dd1f0632198",
                     "path": "2DVector(mode=1)",
                     "interactions": "",
@@ -90,7 +90,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Gamepad 2D",
                     "id": "20aef44d-2ec8-4101-b67e-18c14ea17613",
                     "path": "2DVector",
                     "interactions": "",
@@ -145,7 +145,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Keyboard 2D",
                     "id": "bac43c61-9505-4620-a3d3-54904378ae2c",
                     "path": "2DVector(mode=1)",
                     "interactions": "",
@@ -200,7 +200,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Gamepad 2D",
                     "id": "4ad73bb5-624f-497e-8458-f1c7f11d4bec",
                     "path": "2DVector(mode=1)",
                     "interactions": "",
