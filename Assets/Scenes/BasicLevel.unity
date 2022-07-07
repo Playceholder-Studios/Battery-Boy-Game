@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &45192454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,6 +674,10 @@ PrefabInstance:
     - target: {fileID: 4344702397403984009, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
       propertyPath: m_Name
       value: EMP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344702397403984009, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27dcca896ee6cb242910c687a1aa0c06, type: 3}
@@ -4419,82 +4423,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &494555642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 494555644}
-  - component: {fileID: 494555643}
-  - component: {fileID: 494555645}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &494555643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494555642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 9899fa2286a241043bcf8112d9e581f6, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Game
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!4 &494555644
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494555642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1312232167}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &494555645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494555642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2f3bbcc703e224e899b774be1d99dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuObject: {fileID: 1312232166}
 --- !u!1 &507935223
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,8 +5993,8 @@ GameObject:
   - component: {fileID: 727143463}
   - component: {fileID: 727143462}
   - component: {fileID: 727143461}
-  - component: {fileID: 727143460}
   - component: {fileID: 727143459}
+  - component: {fileID: 727143465}
   m_Layer: 0
   m_Name: Oil Demon (3)
   m_TagString: Enemy
@@ -6091,18 +6019,6 @@ MonoBehaviour:
   maxMoveTime: 1.182
   defaultSpeed: 1
   isMoving: 0
---- !u!114 &727143460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727143458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20815c579c280b14ba6867d7467b9618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &727143461
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6203,6 +6119,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727143465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727143458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ceb4a1835d9015419350dae7d51fd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealthAmount: 3
 --- !u!1 &727704497
 GameObject:
   m_ObjectHideFlags: 0
@@ -8832,7 +8761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1201923007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9850,7 +9779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1262679670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10477,7 +10406,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 494555644}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4227984018674594947, guid: 1dd422b462529d149a7a6edc55601131, type: 3}
       propertyPath: m_Pivot.x
@@ -10572,11 +10501,6 @@ PrefabInstance:
 --- !u!1 &1312232166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4227984018674594959, guid: 1dd422b462529d149a7a6edc55601131, type: 3}
-  m_PrefabInstance: {fileID: 1312232165}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1312232167 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4227984018674594947, guid: 1dd422b462529d149a7a6edc55601131, type: 3}
   m_PrefabInstance: {fileID: 1312232165}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323102299
@@ -13399,9 +13323,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
       propertyPath: empRadius
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1312232166}
+    - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1837701735503989958, guid: 511c46f868bdd4f4bb4e4b98311aa1de, type: 3}
+    - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
+      propertyPath: currentSkill
+      value: 
+      objectReference: {fileID: 1016164990}
     - target: {fileID: 8130137372301275362, guid: 6f1a62233d72d6a4c98c9600056f73b1, type: 3}
       propertyPath: currentSkillObject
       value: 
