@@ -1,25 +1,26 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
-    /// <summary>
-    /// We apply this attribute to this property to be able to see it
-    /// in the inspector and we can <strong>manually</strong> assign the player controller.
-    /// </summary>
-    [field: SerializeField]
-    public PlayerController PlayerController { get; private set; }
-
-    private void Awake()
+    [SerializeField]
+    private GameObject pauseMenuObject;
+    
+    private PauseMenu pauseMenu;
+    // Start is called before the first frame update
+    void Start()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        pauseMenu = pauseMenuObject.GetComponent<PauseMenu>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnPause(InputValue value)
+    {
+        pauseMenu?.TogglePause();
     }
 }
