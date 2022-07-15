@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour, IProjectile
@@ -8,7 +6,7 @@ public class Projectile : MonoBehaviour, IProjectile
     /// <summary>
     /// The damage of the projectile
     /// </summary>
-    public float damage;
+    public int damage;
 
     /// <summary>
     /// The direction of the projectile
@@ -41,16 +39,42 @@ public class Projectile : MonoBehaviour, IProjectile
         m_initialPosition = transform.position;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(direction * speed * Time.deltaTime);
+
+        CheckRange();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(GameTag.Enemy))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void CheckRange()
+    {
+        if (Vector3.Distance(transform.position, m_initialPosition) >= range)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        this.direction = direction;
+    }
+
+    public void SetSize(float size)
+    {
+        gameObject.transform.localScale = Vector3.one * size;
     }
 
     public void OnCollision()
