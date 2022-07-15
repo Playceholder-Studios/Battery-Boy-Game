@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
 
     public GameObject currentSkill;
 
+    [InspectorName("Max Player Health")]
+    public int playerMaxHealth = 3;
+
+    [HideInInspector]
+    public Health playerHealth { get; private set; }
     #endregion Public Members
 
     #region Private Members
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        playerHealth = new Health(playerMaxHealth);
         m_inputFireVector = new Vector3();
         m_inputMoveVector = new Vector3();
         m_rigidbody2D = GetComponent<Rigidbody2D>();
