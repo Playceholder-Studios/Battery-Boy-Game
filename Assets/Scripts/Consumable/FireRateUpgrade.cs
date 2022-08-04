@@ -11,20 +11,20 @@ public class FireRateUpgrade : PlayerConsumable
     /// The length that the upgrade lasts
     /// </summary>
     public float duration = 2f;
+
+    private Timer timer;
     public override void Consume()
     {
         GetPlayer().UpdateFireRate(fireRate);
-        GameObject timer = new GameObject();
-        Timer t = timer.AddComponent<Timer>();
-        t.SetTimer(duration);
-        t.TimerEnded += UpgradeDurationEnd;
-        t.StartTimer();
-        
+        GameObject timerObject = new GameObject();
+        timer = timerObject.AddComponent<Timer>();
+        timer.SetTimer(duration, isDestroyedOnEnd: true);
+        timer.TimerEnded += UpgradeDurationEnd;
+        timer.StartTimer();
     }
 
     private void UpgradeDurationEnd()
     {
-        Debug.Log("Resetting Fire Rate");
         GetPlayer().ResetFireRate();
     }
 }

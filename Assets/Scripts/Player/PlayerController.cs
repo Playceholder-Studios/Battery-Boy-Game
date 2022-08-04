@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     /// Fire rate.
     /// </summary>
     [Range(0.0f, 10.0f)]
-    public float fireRate = 5.0f;
+    public float fireRate;
 
     /// <summary>
     /// Momement speed.
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
+    private float m_defaultFireRate;
     private float m_fireRateTimer;
     private float m_projectileSize = 1.5f;
     private PauseMenu m_pauseMenu;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     #region Unity Lifecycle Methods
     private void OnValidate()
     {
-        // Todo: Maybe change this check to be an attribute instead on in OnValidate
+        // Todo: Maybe change this check to be an attribute instead in OnValidate
         if (!currentSkill.HasComponent<ISkill>())
         {
             currentSkill = null;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         m_rigidbody2D = GetComponent<Rigidbody2D>();
         m_pauseMenu = pauseMenu.GetComponent<PauseMenu>();
         m_currentSkill = currentSkill.GetComponent<ISkill>();
+        m_defaultFireRate = fireRate;
     }
 
     /// <summary>
@@ -140,5 +142,15 @@ public class PlayerController : MonoBehaviour
     private void OnPause(InputValue pause)
     {
         m_pauseMenu?.TogglePause();
+    }
+
+    public void UpdateFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
+    }
+
+    public void ResetFireRate()
+    {
+        fireRate = m_defaultFireRate;
     }
 }

@@ -11,7 +11,7 @@ public static class HasComponentExtension
     public static bool HasComponent<T>(this GameObject obj)
     {
         if (obj == null) return false;
-        
+
         return obj.GetComponent<T>() != null;
     }
 }
