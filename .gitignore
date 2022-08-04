@@ -482,6 +482,7 @@ FodyWeavers.xsd
 
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+!/Assets/*.meta
 
 # Built Visual Studio Code Extensions
 *.vsix
