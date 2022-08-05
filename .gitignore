@@ -70,10 +70,6 @@ crashlytics-build.properties
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
-# Temporary auto-generated Android Assets
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
-
 
 ########## VISUAL STUDIO GITIGNORE ##########
 
@@ -482,7 +478,11 @@ FodyWeavers.xsd
 
 !.vscode/extensions.json
 !.vscode/*.code-snippets
-!/Assets/*.meta
+!/[Aa]ssets/*/*.meta
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Built Visual Studio Code Extensions
 *.vsix
