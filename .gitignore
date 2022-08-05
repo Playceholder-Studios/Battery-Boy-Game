@@ -478,7 +478,7 @@ FodyWeavers.xsd
 
 !.vscode/extensions.json
 !.vscode/*.code-snippets
-!/[Aa]ssets/*/*.meta
+!/[Aa]ssets/**/*.meta
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
