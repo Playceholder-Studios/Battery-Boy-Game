@@ -8,7 +8,7 @@ public class PlayerConsumableManager : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(GameTag.Consumable))
+        if (collision.gameObject.CompareTag(GameTag.Consumable.ToString()))
         {
             collision.GetComponent<IConsumable>().Consume();
         }

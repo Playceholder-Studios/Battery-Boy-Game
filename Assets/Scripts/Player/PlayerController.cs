@@ -25,9 +25,13 @@ public class PlayerController : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float smoothFactor = 0.825f;
 
+    public bool hasKey { get; set; }
+
     public GameObject projectile;
 
     public GameObject currentSkill;
+
+    public GameObject keyHolder;
 
     [InspectorName("Max Player Health")]
     public int playerMaxHealth = 3;
@@ -50,15 +54,6 @@ public class PlayerController : MonoBehaviour
     #endregion Private Members
 
     #region Unity Lifecycle Methods
-    private void OnValidate()
-    {
-        // Todo: Maybe change this check to be an attribute instead in OnValidate
-        if (!currentSkill.HasComponent<ISkill>())
-        {
-            currentSkill = null;
-        }
-    }
-
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -96,6 +91,15 @@ public class PlayerController : MonoBehaviour
 
                 m_fireRateTimer = fireRate;
             }
+        }
+
+        if (hasKey)
+        {
+            keyHolder.SetActive(true);
+        }
+        else
+        {
+            keyHolder.SetActive(false);
         }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
     }
@@ -142,6 +146,16 @@ public class PlayerController : MonoBehaviour
     private void OnPause(InputValue pause)
     {
         m_pauseMenu?.TogglePause();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
+        if (hasKey && unlockableWall != null)
+        {
+            unlockableWall.Unlock();
+            hasKey = false;
+        }
     }
 
     public void UpdateFireRate(float newFireRate)

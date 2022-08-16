@@ -8,10 +8,10 @@ public static class HasComponentExtension
     /// <typeparam name="T"></typeparam>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public static bool HasComponent<T>(this GameObject obj)
+    public static T HasComponent<T>(this GameObject obj)
     {
-        if (obj == null) return false;
+        if (obj == null) return default(T);
 
-        return obj.GetComponent<T>() != null;
+        return obj.GetComponent<T>();
     }
 }

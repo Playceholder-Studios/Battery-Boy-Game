@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(GameTag.Player))
+        if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
             collision.gameObject.GetComponent<PlayerController>()?.playerHealth.Damage(playerCollisionDamage);
             health.Damage(playerCollisionDamage);
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(GameTag.Projectile))
+        if (collision.gameObject.CompareTag(GameTag.Projectile.ToString()))
         {
             health.Damage(collision.gameObject.GetComponent<Projectile>().damage);
         }

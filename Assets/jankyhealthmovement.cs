@@ -15,6 +15,7 @@ public class jankyhealthmovement : MonoBehaviour
 
     void Update()
     {
+        // Need to change this to use the new Unity input module
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
