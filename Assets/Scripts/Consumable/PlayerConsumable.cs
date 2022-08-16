@@ -13,7 +13,7 @@ public abstract class PlayerConsumable : MonoBehaviour, IConsumable
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(GameTag.Player))
+        if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
             Destroy(gameObject);
         }

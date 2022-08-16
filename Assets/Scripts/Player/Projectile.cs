@@ -53,7 +53,7 @@ public class Projectile : MonoBehaviour, IProjectile
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(GameTag.Enemy))
+        if (collision.gameObject.CompareTag(GameTag.Enemy.ToString()))
         {
             Destroy(gameObject);
         }

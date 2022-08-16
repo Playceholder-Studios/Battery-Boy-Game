@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // TODO: Need to change this to use the new Unity input module
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical"); 
     }
