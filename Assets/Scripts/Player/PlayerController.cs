@@ -41,15 +41,12 @@ public class PlayerController : MonoBehaviour
     #endregion Public Members
 
     #region Private Members
-    [SerializeField]
-    private GameObject pauseMenu;
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
     private float m_defaultFireRate;
     private float m_fireRateTimer;
     private float m_projectileSize = 1.5f;
-    private PauseMenu m_pauseMenu;
     private ISkill m_currentSkill;
     #endregion Private Members
 
@@ -63,7 +60,6 @@ public class PlayerController : MonoBehaviour
         m_inputFireVector = new Vector3();
         m_inputMoveVector = new Vector3();
         m_rigidbody2D = GetComponent<Rigidbody2D>();
-        m_pauseMenu = pauseMenu.GetComponent<PauseMenu>();
         m_currentSkill = currentSkill.GetComponent<ISkill>();
         m_defaultFireRate = fireRate;
     }
@@ -141,11 +137,6 @@ public class PlayerController : MonoBehaviour
     private void OnSkill(InputValue value)
     {
         m_currentSkill?.Activate();
-    }
-
-    private void OnPause(InputValue pause)
-    {
-        m_pauseMenu?.TogglePause();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
