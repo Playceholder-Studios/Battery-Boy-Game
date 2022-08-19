@@ -149,6 +149,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
+        if (hasKey && unlockableWall != null)
+        {
+            unlockableWall.Unlock();
+            hasKey = false;
+        }
+    }
+
     public void UpdateFireRate(float newFireRate)
     {
         fireRate = newFireRate;
