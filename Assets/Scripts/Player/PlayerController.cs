@@ -93,10 +93,6 @@ public class PlayerController : MonoBehaviour
         {
             keyHolder.SetActive(true);
         }
-        else
-        {
-            keyHolder.SetActive(false);
-        }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
     }
 
