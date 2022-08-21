@@ -23,6 +23,8 @@ public class ChaseTarget : MonoBehaviour
     
     public float defaultSpeed = 1.0f;
 
+    public bool shouldChasePlayer = false;
+
     public bool isMoving = false;
     private float timeLeft = 0f;
     private float timeToMove = 0f;
@@ -31,6 +33,10 @@ public class ChaseTarget : MonoBehaviour
 
     private void Start()
     {
+        if (shouldChasePlayer && target == null)
+        {
+            target = GameObject.FindGameObjectWithTag(GameTag.Player.ToString()).transform;
+        }
         currentTarget = target.position;
         currentSpeed = defaultSpeed;
     }

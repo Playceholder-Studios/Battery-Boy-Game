@@ -93,10 +93,6 @@ public class PlayerController : MonoBehaviour
         {
             keyHolder.SetActive(true);
         }
-        else
-        {
-            keyHolder.SetActive(false);
-        }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
     }
 
@@ -137,16 +133,6 @@ public class PlayerController : MonoBehaviour
     private void OnSkill(InputValue value)
     {
         m_currentSkill?.Activate();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
-        if (hasKey && unlockableWall != null)
-        {
-            unlockableWall.Unlock();
-            hasKey = false;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
