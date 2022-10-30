@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
@@ -8,6 +10,11 @@ public class Enemy : MonoBehaviour, IEnemy
     public int playerCollisionDamage = 1;
 
     public int defaultHealthAmount = 1;
+
+    [field: SerializeField]
+    public Action OnDeath;
+
+    public UnityEvent EnemyDied;
 
     private Health health;
 
@@ -42,6 +49,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (IsDead())
         {
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

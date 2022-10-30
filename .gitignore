@@ -478,6 +478,7 @@ FodyWeavers.xsd
 
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+# Don't ignore Unity Asset metadata files
 !/[Aa]ssets/**/*.meta
 !/[Aa]ssets/**/*.tss
 

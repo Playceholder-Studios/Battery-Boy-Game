@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
         if (hasKey && unlockableWall != null)
         {
             unlockableWall.Unlock();
+            keyHolder.SetActive(false);
             hasKey = false;
         }
     }
