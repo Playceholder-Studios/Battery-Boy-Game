@@ -25,6 +25,10 @@ public class ChaseTarget : MonoBehaviour
 
     public bool shouldChasePlayer = false;
 
+    public bool shouldOnlyMoveWhenAggroed = false;
+
+    public CircleRangeChecker aggroRange;
+
     public bool isMoving = false;
     private float timeLeft = 0f;
     private float timeToMove = 0f;
@@ -52,7 +56,7 @@ public class ChaseTarget : MonoBehaviour
             isMoving = true;
         }
 
-        if (isMoving)
+        if (isMoving && (shouldOnlyMoveWhenAggroed && aggroRange.IsInRange))
         {
             transform.position = Vector3.MoveTowards(transform.position, currentTarget, currentSpeed * Time.deltaTime);
             timeToMove -= Time.deltaTime;
