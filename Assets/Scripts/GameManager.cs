@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayMusic();
         m_pauseMenu = PauseMenu.GetComponent<PauseMenu>();
     }
 
