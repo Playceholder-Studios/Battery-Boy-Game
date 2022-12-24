@@ -20,6 +20,10 @@ public class Health : IHealth
         CurrentHealth -= damageAmount;
     }
 
+    /// <summary>
+    /// Increases the health by <paramref name="healAmount"/>.
+    /// </summary>
+    /// <param name="healAmount"></param>
     public void Heal(int healAmount)
     {
         CurrentHealth = Math.Min(CurrentHealth + healAmount, MaxHealth);

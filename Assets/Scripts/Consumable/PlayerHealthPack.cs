@@ -8,6 +8,6 @@ public class PlayerHealthPack : PlayerConsumable
     public int HealAmount = 1;
     public override void Consume()
     {
-        GetPlayer().playerHealth.Heal(HealAmount);
+        GetPlayer().HealPlayer(HealAmount);
     }
 }

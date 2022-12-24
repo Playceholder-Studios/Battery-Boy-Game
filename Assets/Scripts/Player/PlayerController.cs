@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// Controls player movement.
@@ -34,10 +36,16 @@ public class PlayerController : MonoBehaviour
     public GameObject keyHolder;
 
     [InspectorName("Max Player Health")]
-    public int playerMaxHealth = 3;
+    public int playerMaxHealth = 10;
+
+    [InspectorName("Max Player Projectile")]
+    public int playerMaxProjectile = 10;
 
     [HideInInspector]
     public Health playerHealth { get; private set; }
+
+    public delegate void IntDel(int projectileCount);
+    public event IntDel OnProjectileUpdate;
     #endregion Public Members
 
     #region Private Members
@@ -47,6 +55,11 @@ public class PlayerController : MonoBehaviour
     private float m_defaultFireRate;
     private float m_fireRateTimer;
     private float m_projectileSize = 1.5f;
+    
+    /// <summary>
+    /// The amount the players health goes down when a projectile is shot
+    /// </summary>
+    private int m_projectileHealthDamage = 1;
     private ISkill m_currentSkill;
     #endregion Private Members
 
@@ -64,9 +77,6 @@ public class PlayerController : MonoBehaviour
         m_defaultFireRate = fireRate;
     }
 
-    /// <summary>
-    /// Update is called once per frame.
-    /// </summary>
     private void Update()
     {
         if (m_fireRateTimer > 0)
@@ -74,19 +84,19 @@ public class PlayerController : MonoBehaviour
             m_fireRateTimer -= Time.deltaTime;
         }
 
-        if (m_inputFireVector != Vector3.zero)
+        if (CanShoot())
         {
-            // Timer reached 0, reset timer and spawn projectile
-            if (m_fireRateTimer <= 0)
+            GameObject obj = Instantiate(projectile, transform.position + m_inputFireVector, Quaternion.identity);
+            Projectile pj = obj.GetComponent<Projectile>();
+            playerHealth.Damage(m_projectileHealthDamage);
+            if (OnProjectileUpdate != null)
             {
-                GameObject obj = Instantiate(projectile, transform.position + m_inputFireVector, Quaternion.identity);
-                Projectile pj = obj.GetComponent<Projectile>();
-                pj?.SetDirection(m_inputFireVector);
-                pj?.SetSize(m_projectileSize);
-
-
-                m_fireRateTimer = fireRate;
+                OnProjectileUpdate(playerHealth.CurrentHealth);
             }
+            pj?.SetDirection(m_inputFireVector);
+            pj?.SetSize(m_projectileSize);
+
+            m_fireRateTimer = fireRate;
         }
 
         if (hasKey)
@@ -106,7 +116,20 @@ public class PlayerController : MonoBehaviour
         m_rigidbody2D.velocity *= smoothFactor;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
+        if (hasKey && unlockableWall != null)
+        {
+            unlockableWall.Unlock();
+            keyHolder.SetActive(false);
+            hasKey = false;
+        }
+    }
+
     #endregion Unity Lifecycle Methods
+
+    #region Unity Input Methods
 
     /// <summary>
     /// Handles messages from the Player->Fire action.
@@ -135,14 +158,20 @@ public class PlayerController : MonoBehaviour
         m_currentSkill?.Activate();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    #endregion Unity Input Methods
+
+    private bool CanShoot()
     {
-        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
-        if (hasKey && unlockableWall != null)
+        // m_inputFireVector is updated by OnFire
+        return playerHealth.CurrentHealth > 1 + (m_projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
+    }
+
+    public void HealPlayer(int amount)
+    {
+        playerHealth.Heal(amount);
+        if (OnProjectileUpdate != null)
         {
-            unlockableWall.Unlock();
-            keyHolder.SetActive(false);
-            hasKey = false;
+            OnProjectileUpdate(playerHealth.CurrentHealth);
         }
     }
 
