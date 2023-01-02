@@ -27,6 +27,12 @@ public class Projectile : MonoBehaviour, IProjectile
     /// The speed of the projectile
     /// </summary>
     public float speed;
+
+    /// <summary>
+    /// The fire sound of the projectile
+    /// </summary>
+    public string fireSoundLabel;
+
     #endregion Public Properties
 
     #region Private Members
@@ -41,7 +47,7 @@ public class Projectile : MonoBehaviour, IProjectile
 
     void Start()
     {
-        
+        AudioManager.Instance.PlayEffect(fireSoundLabel);
     }
 
     void Update()
@@ -53,12 +59,14 @@ public class Projectile : MonoBehaviour, IProjectile
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Hits an enemy
         if (collision.gameObject.CompareTag(GameTag.Enemy.ToString()))
         {
             Destroy(gameObject);
         }
     }
 
+    /// Destroy projectile if its traveled past its max range
     private void CheckRange()
     {
         if (Vector3.Distance(transform.position, m_initialPosition) >= range)
@@ -75,6 +83,11 @@ public class Projectile : MonoBehaviour, IProjectile
     public void SetSize(float size)
     {
         gameObject.transform.localScale = Vector3.one * size;
+    }
+
+    public void SetFireSound(string label)
+    {
+        this.fireSoundLabel = label;
     }
 
     public void OnCollision()
