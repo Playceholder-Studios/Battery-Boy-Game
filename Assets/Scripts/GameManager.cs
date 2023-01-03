@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField]
     public PlayerController PlayerController { get; private set; }
 
+    public AudioClip levelMusic;
+
     private PauseMenuController m_pauseMenu;
 
     private void Awake()
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.SetMusic(levelMusic);
         AudioManager.Instance.PlayMusic();
         m_pauseMenu = PauseMenu.GetComponent<PauseMenuController>();
     }
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Pause(CallbackContext ctx)
     {
+        AudioManager.Instance.ToggleMusic();
         m_pauseMenu?.TogglePause();
     }
 

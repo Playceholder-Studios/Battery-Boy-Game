@@ -18,7 +18,7 @@ public abstract class PlayerConsumable : MonoBehaviour, IConsumable
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
-            AudioManager.Instance.AddEffect(PICKUP_SOUND_LABEL, pickupSound);
+            AudioManager.Instance.SetEffect(PICKUP_SOUND_LABEL, pickupSound);
             AudioManager.Instance.PlayEffect(PICKUP_SOUND_LABEL);
             Destroy(gameObject);
         }

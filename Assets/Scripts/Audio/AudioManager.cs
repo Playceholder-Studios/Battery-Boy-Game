@@ -60,9 +60,10 @@ public class AudioManager : MonoBehaviour
         EffectsSources = new Dictionary<string, AudioSource>();
     }
 
-    public void AddEffect(string label, AudioClip clip)
+    public void SetEffect(string label, AudioClip clip)
     {
     	AudioSource audioSource;
+		// c# sucks
 		try
 		{
 			audioSource = EffectsSources[label];
@@ -81,9 +82,31 @@ public class AudioManager : MonoBehaviour
         EffectsSources[label]?.Play();
     }
 
+    // Stops clip playback
+    public void StopEffect(string label)
+    {
+        EffectsSources[label]?.Stop();
+    }
+
+	public void SetMusic(AudioClip clip)
+	{
+		MusicSource.clip = clip;
+	}
+
     // Play a single clip through the music source.
     public void PlayMusic()
     {
-        MusicSource.Play();
+		MusicSource.Play();
+    }
+
+    // Play a single clip through the music source.
+    public void ToggleMusic()
+    {
+		if(MusicSource.isPlaying) {
+			MusicSource.Pause();
+		}
+		else {
+        	MusicSource.UnPause();
+		}
     }
 }

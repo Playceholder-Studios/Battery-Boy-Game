@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
         m_currentSkill = currentSkill.GetComponent<ISkill>();
         m_defaultFireRate = fireRate;
 
-        AudioManager.Instance.AddEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound);
-        AudioManager.Instance.AddEffect(FIRE_SOUND_LABEL, fireSound);
+        AudioManager.Instance.SetEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound);
+        AudioManager.Instance.SetEffect(FIRE_SOUND_LABEL, fireSound);
     }
 
     private void Update()
@@ -157,7 +157,12 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         m_inputMoveVector = value.Get<Vector2>();
-        AudioManager.Instance.PlayEffect(FOOTSTEPS_SOUND_LABEL);
+        if (m_inputMoveVector == Vector3.zero)
+        {
+            AudioManager.Instance.StopEffect(FOOTSTEPS_SOUND_LABEL);
+        } else {
+            AudioManager.Instance.PlayEffect(FOOTSTEPS_SOUND_LABEL);
+        }
     }
 
     /// <summary>
