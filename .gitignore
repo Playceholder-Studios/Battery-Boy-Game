@@ -488,3 +488,6 @@ FodyWeavers.xsd
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Dumb mac stuff
+*.DS_Store

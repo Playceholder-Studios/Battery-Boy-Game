@@ -8,6 +8,9 @@ using UnityEngine.Rendering.Universal;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    const string FOOTSTEPS_SOUND_LABEL = "footsteps";
+    const string FIRE_SOUND_LABEL = "fireProjectile";
+
     #region Public Members
     /// <summary>
     /// Fire rate.
@@ -35,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject keyHolder;
 
-    public AudioClip footsteps;
+    public AudioClip footstepsSound;
+    public AudioClip fireSound;
 
     [InspectorName("Max Player Health")]
     public int playerMaxHealth = 10;
@@ -77,6 +81,9 @@ public class PlayerController : MonoBehaviour
         m_rigidbody2D = GetComponent<Rigidbody2D>();
         m_currentSkill = currentSkill.GetComponent<ISkill>();
         m_defaultFireRate = fireRate;
+
+        AudioManager.Instance.AddEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound);
+        AudioManager.Instance.AddEffect(FIRE_SOUND_LABEL, fireSound);
     }
 
     private void Update()
@@ -97,6 +104,7 @@ public class PlayerController : MonoBehaviour
             }
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
+            pj?.SetFireSound(FIRE_SOUND_LABEL);
 
             m_fireRateTimer = fireRate;
         }
@@ -149,7 +157,7 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         m_inputMoveVector = value.Get<Vector2>();
-        AudioManager.Instance.Play(footsteps);
+        AudioManager.Instance.PlayEffect(FOOTSTEPS_SOUND_LABEL);
     }
 
     /// <summary>
