@@ -62,7 +62,15 @@ public class AudioManager : MonoBehaviour
 
     public void AddEffect(string label, AudioClip clip)
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+    	AudioSource audioSource;
+		try
+		{
+			audioSource = EffectsSources[label];
+		}
+		catch
+		{
+			audioSource = gameObject.AddComponent<AudioSource>();
+		}
         audioSource.clip = clip;
         EffectsSources[label] = audioSource;
     }

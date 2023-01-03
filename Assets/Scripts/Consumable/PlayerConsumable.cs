@@ -5,6 +5,9 @@ using UnityEngine;
 /// </summary>
 public abstract class PlayerConsumable : MonoBehaviour, IConsumable
 {
+    const string PICKUP_SOUND_LABEL = "pickup";
+    public AudioClip pickupSound;
+
     public PlayerController GetPlayer()
     {
         return GameManager.Instance.PlayerController;
@@ -15,6 +18,8 @@ public abstract class PlayerConsumable : MonoBehaviour, IConsumable
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
+            AudioManager.Instance.AddEffect(PICKUP_SOUND_LABEL, pickupSound);
+            AudioManager.Instance.PlayEffect(PICKUP_SOUND_LABEL);
             Destroy(gameObject);
         }
     }
