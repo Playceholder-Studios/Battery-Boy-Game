@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8957964441fb28c42a0a8457d3a4e665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupSound: {fileID: 8300000, guid: 0dae64a6600cf45c18579db9b630b569, type: 3}
 --- !u!1 &2507828027645603568
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,3 +287,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4ac42bf7aad5f4eb09b68c3a4190d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockSound: {fileID: 8300000, guid: ecb3f396bc7e94ff8bb8f669679669ea, type: 3}

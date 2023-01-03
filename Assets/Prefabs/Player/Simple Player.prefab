@@ -683,8 +683,8 @@ MonoBehaviour:
   projectile: {fileID: 1837701735503989958, guid: ef07bb7b244218c4e9406c9b0ec63e31, type: 3}
   currentSkill: {fileID: 3550230467207951489}
   keyHolder: {fileID: 2040961341}
-  footstepsSound: {fileID: 0}
-  fireSound: {fileID: 0}
+  footstepsSound: {fileID: 8300000, guid: da7c0d461eb13a041b87af142731d720, type: 3}
+  fireSound: {fileID: 8300000, guid: fe9d2e4b7fba24a4580d3f02939f0120, type: 3}
   playerMaxHealth: 3
   playerMaxProjectile: 10
 --- !u!114 &1331450618
