@@ -28,53 +28,54 @@ using UnityEngine;
 // }
 
 public class AudioManager : MonoBehaviour
-{   
-	// Audio players components.
-	public Dictionary<string, AudioSource> EffectsSources;
-	public AudioSource MusicSource;
-	// Random pitch adjustment range.
-	public float LowPitchRange = .95f;
-	public float HighPitchRange = 1.05f;
-	// Singleton instance.
-	public static AudioManager Instance = null;
+{
+    // Audio players components.
+    public Dictionary<string, AudioSource> EffectsSources;
+    public AudioSource MusicSource;
+    // Random pitch adjustment range.
+    public float LowPitchRange = .95f;
+    public float HighPitchRange = 1.05f;
+    // Singleton instance.
+    public static AudioManager Instance = null;
 
-	// [field: SerializeField]
-	// Sound[] sounds;
-	
-	// Initialize the singleton instance.
-	private void Awake()
-	{
-		// If there is not already an instance of SoundManager, set it to this.
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-		//If an instance already exists, destroy whatever this object is to enforce the singleton.
-		else if (Instance != this)
-		{
-			Destroy(gameObject);
-		}
-		//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-		DontDestroyOnLoad (gameObject);
+    // [field: SerializeField]
+    // Sound[] sounds;
 
-		EffectsSources = new Dictionary<string, AudioSource>();
-	}
+    // Initialize the singleton instance.
+    private void Awake()
+    {
+        // If there is not already an instance of SoundManager, set it to this.
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        //If an instance already exists, destroy whatever this object is to enforce the singleton.
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
+        DontDestroyOnLoad(gameObject);
 
-	public void AddEffect(string label, AudioClip clip) {
-		AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-		audioSource.clip = clip;
-		EffectsSources[label] = audioSource;
-	}
+        EffectsSources = new Dictionary<string, AudioSource>();
+    }
 
-	// Play a single clip through the sound effects source.
-	public void PlayEffect(string label)
-	{
-		EffectsSources[label]?.Play();
-	}
-	
-	// Play a single clip through the music source.
-	public void PlayMusic()
-	{
-		MusicSource.Play();
-	}
+    public void AddEffect(string label, AudioClip clip)
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        EffectsSources[label] = audioSource;
+    }
+
+    // Play a single clip through the sound effects source.
+    public void PlayEffect(string label)
+    {
+        EffectsSources[label]?.Play();
+    }
+
+    // Play a single clip through the music source.
+    public void PlayMusic()
+    {
+        MusicSource.Play();
+    }
 }
