@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField]
     public PlayerController PlayerController { get; private set; }
 
-    private PauseMenu m_pauseMenu;
+    private PauseMenuController m_pauseMenu;
 
     private void Awake()
     {
@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        m_pauseMenu = PauseMenu.GetComponent<PauseMenu>();
+        AudioManager.Instance.PlayMusic();
+        m_pauseMenu = PauseMenu.GetComponent<PauseMenuController>();
     }
 
     private void OnEnable()

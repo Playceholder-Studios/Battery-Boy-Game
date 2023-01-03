@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject keyHolder;
 
+    public AudioClip footsteps;
+
     [InspectorName("Max Player Health")]
     public int playerMaxHealth = 10;
 
@@ -147,6 +149,7 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         m_inputMoveVector = value.Get<Vector2>();
+        AudioManager.Instance.Play(footsteps);
     }
 
     /// <summary>

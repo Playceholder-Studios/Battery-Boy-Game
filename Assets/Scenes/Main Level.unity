@@ -1100,6 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d5e656096453a4aa34c064e8829579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 512005752}
 --- !u!1 &513074768
 GameObject:
   m_ObjectHideFlags: 0
@@ -8781,6 +8782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586650640}
   - component: {fileID: 1586650639}
+  - component: {fileID: 1586650641}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8819,6 +8821,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586650641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586650638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e14f4aa10ced4dbe82b0b3b112cb5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectsSource: {fileID: 1536932712}
+  MusicSource: {fileID: 1536932712}
+  LowPitchRange: 0.95
+  HighPitchRange: 1.05
 --- !u!1 &1740862143
 GameObject:
   m_ObjectHideFlags: 0
