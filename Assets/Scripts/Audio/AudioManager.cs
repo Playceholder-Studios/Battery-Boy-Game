@@ -2,16 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// potential sound class? might not be necessary
+// public class Sound {
+
+// 	public string name;
+// 	public AudioClip clip;
+
+// 	public float volume = 0.7f;
+// 	public float pitch = 1f;
+
+// 	private AudioSource source;
+
+// 	public void SetSource(AudioSource _source)
+// 	{
+// 		source = _source;
+// 		source.clip = clip;
+// 	}
+
+// 	public void Play()
+// 	{
+// 		source.volume = volume;
+// 		source.pitch = pitch;
+// 		source.Play();
+// 	}
+// }
+
 public class AudioManager : MonoBehaviour
 {   
 	// Audio players components.
-	public AudioSource EffectsSource;
+	public Dictionary<string, AudioSource> EffectsSources;
 	public AudioSource MusicSource;
 	// Random pitch adjustment range.
 	public float LowPitchRange = .95f;
 	public float HighPitchRange = 1.05f;
 	// Singleton instance.
 	public static AudioManager Instance = null;
+
+	// [field: SerializeField]
+	// Sound[] sounds;
 	
 	// Initialize the singleton instance.
 	private void Awake()
@@ -28,25 +56,25 @@ public class AudioManager : MonoBehaviour
 		}
 		//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
 		DontDestroyOnLoad (gameObject);
+
+		EffectsSources = new Dictionary<string, AudioSource>();
 	}
+
+	public void AddEffect(string label, AudioClip clip) {
+		AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.clip = clip;
+		EffectsSources[label] = audioSource;
+	}
+
 	// Play a single clip through the sound effects source.
-	public void Play(AudioClip clip)
+	public void PlayEffect(string label)
 	{
-		EffectsSource.clip = clip;
-		EffectsSource.Play();
+		EffectsSources[label]?.Play();
 	}
+	
 	// Play a single clip through the music source.
 	public void PlayMusic()
 	{
 		MusicSource.Play();
-	}
-	// Play a random clip from an array, and randomize the pitch slightly.
-	public void RandomSoundEffect(params AudioClip[] clips)
-	{
-		int randomIndex = Random.Range(0, clips.Length);
-		float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-		EffectsSource.pitch = randomPitch;
-		EffectsSource.clip = clips[randomIndex];
-		EffectsSource.Play();
 	}
 }
