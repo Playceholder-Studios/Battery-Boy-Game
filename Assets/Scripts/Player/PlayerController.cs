@@ -95,7 +95,8 @@ public class PlayerController : MonoBehaviour
 
         if (CanShoot())
         {
-            GameObject obj = Instantiate(projectile, transform.position + m_inputFireVector, Quaternion.identity);
+            Vector3 projectileSpawnLocation = transform.position + m_inputFireVector * 2;
+            GameObject obj = Instantiate(projectile, projectileSpawnLocation, Quaternion.identity);
             Projectile pj = obj.GetComponent<Projectile>();
             playerHealth.Damage(m_projectileHealthDamage);
             if (OnProjectileUpdate != null)
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
             }
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
-            pj?.SetFireSound(FIRE_SOUND_LABEL);
+            pj?.SetFireSound(FIRE_SOUND_LABEL);     
 
             m_fireRateTimer = fireRate;
         }

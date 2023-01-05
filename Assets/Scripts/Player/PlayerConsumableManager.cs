@@ -11,6 +11,6 @@ public class PlayerConsumableManager : MonoBehaviour
         if (collision.gameObject.CompareTag(GameTag.Consumable.ToString()))
         {
             collision.GetComponent<IConsumable>().Consume();
-        }
+        }   
     }
 }

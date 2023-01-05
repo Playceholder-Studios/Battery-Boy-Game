@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1837701735503989960}
   - component: {fileID: 1837701735503989959}
   - component: {fileID: 13249797078192478}
-  - component: {fileID: 4286192800722007397}
+  - component: {fileID: -6083585640053245302}
+  - component: {fileID: 4193327919668791393}
   m_Layer: 0
   m_Name: Light Bullet
   m_TagString: Consumable
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
---- !u!114 &4286192800722007397
+--- !u!114 &-6083585640053245302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +144,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837701735503989958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb440b6b47cab0a4f906cd68774e0f4a, type: 3}
+  m_Script: {fileID: 11500000, guid: b998bf3971c2c4246ba9abbcd7e63d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSound: {fileID: 8300000, guid: 0bce30d92d2284991a67632ce4fc18e1, type: 3}
+  HealAmount: 1
+--- !u!114 &4193327919668791393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837701735503989958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a81f583adf66164eade0bfbd052aaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   direction: {x: 0, y: 0}
-  range: 3
+  range: 5
   size: 2
-  speed: 1
-  HealAmount: 1
-  timeToLiveInSeconds: 10
+  speed: 10
+  fireSoundLabel: 

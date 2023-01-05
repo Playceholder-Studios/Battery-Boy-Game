@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LightBullet : PlayerConsumable, IProjectile
+public class LightBullet : PlayerConsumable, IProjectile, IConsumable
 {
     /// <summary>
     /// The damage of the projectile
