@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2856905582322512922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -680,12 +680,12 @@ MonoBehaviour:
   fireRate: 0.5
   moveSpeed: 80
   smoothFactor: 0.825
-  projectile: {fileID: 1837701735503989958, guid: ef07bb7b244218c4e9406c9b0ec63e31, type: 3}
+  projectile: {fileID: 1837701735503989958, guid: 6312402d2cb3e4945914f4704061a97c, type: 3}
   currentSkill: {fileID: 3550230467207951489}
   keyHolder: {fileID: 2040961341}
   footstepsSound: {fileID: 8300000, guid: da7c0d461eb13a041b87af142731d720, type: 3}
   fireSound: {fileID: 8300000, guid: fe9d2e4b7fba24a4580d3f02939f0120, type: 3}
-  playerMaxHealth: 3
+  playerMaxHealth: 10
   playerMaxProjectile: 10
 --- !u!114 &1331450618
 MonoBehaviour:
@@ -711,9 +711,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e4bcd0d9cd79b4f9cae3f3d3ba4723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLight: {fileID: 0}
-  maxIntensity: 0
-  minIntensity: 0
+  playerLight: {fileID: 101833524}
+  maxIntensity: 1.25
+  minIntensity: 0.3
 --- !u!61 &8130137372301275374
 BoxCollider2D:
   m_ObjectHideFlags: 0
