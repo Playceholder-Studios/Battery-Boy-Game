@@ -15,7 +15,7 @@ public class CyberColossus : Enemy
 
     private void Start()
     {
-        player = GameManager.Instance.PlayerController;
+        player = GameManager.GetPlayer();
         ResetTargetMovement();
         movementTargetCount = MovementTarget.Length;
         startingPosition = transform.position;

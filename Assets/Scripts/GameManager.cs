@@ -69,4 +69,9 @@ public class GameManager : MonoBehaviour
     {
         GameEnded?.Invoke();
     }
+
+    public static PlayerController GetPlayer()
+    {
+        return GameManager.Instance.PlayerController;
+    }
 }

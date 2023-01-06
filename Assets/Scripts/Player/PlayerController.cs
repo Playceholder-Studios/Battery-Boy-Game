@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     const string FOOTSTEPS_SOUND_LABEL = "footsteps";
     const string FIRE_SOUND_LABEL = "fireProjectile";
+    const string DAMAGE_SOUND_LABEL = "playerDamaged";
 
     #region Public Members
     /// <summary>
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip footstepsSound;
     public AudioClip fireSound;
+    public AudioClip damageSound;
 
     [InspectorName("Max Player Health")]
     public int playerMaxHealth = 10;
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         AudioManager.Instance.SetEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound);
         AudioManager.Instance.SetEffect(FIRE_SOUND_LABEL, fireSound);
+        AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
     }
 
     private void Update()
@@ -98,11 +101,7 @@ public class PlayerController : MonoBehaviour
             Vector3 projectileSpawnLocation = transform.position + m_inputFireVector * 2;
             GameObject obj = Instantiate(projectile, projectileSpawnLocation, Quaternion.identity);
             Projectile pj = obj.GetComponent<Projectile>();
-            playerHealth.Damage(m_projectileHealthDamage);
-            if (OnProjectileUpdate != null)
-            {
-                OnProjectileUpdate(playerHealth.CurrentHealth);
-            }
+            DamagePlayer(m_projectileHealthDamage, false);
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
             pj?.SetFireSound(FIRE_SOUND_LABEL);     
@@ -125,17 +124,6 @@ public class PlayerController : MonoBehaviour
         // Apply force and apply smoothing factor
         m_rigidbody2D.AddForce(m_inputMoveVector * moveSpeed);
         m_rigidbody2D.velocity *= smoothFactor;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var unlockableWall = collision.gameObject.HasComponent<UnlockableWall>();
-        if (hasKey && unlockableWall != null)
-        {
-            unlockableWall.Unlock();
-            keyHolder.SetActive(false);
-            hasKey = false;
-        }
     }
 
     #endregion Unity Lifecycle Methods
@@ -181,6 +169,19 @@ public class PlayerController : MonoBehaviour
     {
         // m_inputFireVector is updated by OnFire
         return playerHealth.CurrentHealth > 1 + (m_projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
+    }
+
+    public void DamagePlayer(int amount, bool playEffect = true)
+    {
+        if (playEffect) 
+        {
+            AudioManager.Instance.PlayEffect(DAMAGE_SOUND_LABEL);
+        }
+        playerHealth.Damage(amount);
+        if (OnProjectileUpdate != null)
+        {
+            OnProjectileUpdate(playerHealth.CurrentHealth);
+        }
     }
 
     public void HealPlayer(int amount)

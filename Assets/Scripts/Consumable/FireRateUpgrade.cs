@@ -15,7 +15,7 @@ public class FireRateUpgrade : PlayerConsumable
     private Timer timer;
     public override void Consume()
     {
-        GetPlayer().UpdateFireRate(fireRate);
+        GameManager.GetPlayer().UpdateFireRate(fireRate);
         GameObject timerObject = new GameObject();
         timer = timerObject.AddComponent<Timer>();
         timer.SetTimer(duration, isDestroyedOnEnd: true);
@@ -25,6 +25,6 @@ public class FireRateUpgrade : PlayerConsumable
 
     private void UpgradeDurationEnd()
     {
-        GetPlayer().ResetFireRate();
+        GameManager.GetPlayer().ResetFireRate();
     }
 }

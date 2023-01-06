@@ -9,10 +9,9 @@ public class KeyObstacleHandler : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
-            var playerController = collision.gameObject.GetComponent<PlayerController>();
             AudioManager.Instance.SetEffect(PICKUP_SOUND_LABEL, pickupSound);
             AudioManager.Instance.PlayEffect(PICKUP_SOUND_LABEL);
-            playerController.hasKey = true;
+            GameManager.GetPlayer().hasKey = true;
         }
     }
 }

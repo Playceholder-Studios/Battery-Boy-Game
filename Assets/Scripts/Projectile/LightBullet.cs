@@ -78,7 +78,7 @@ public class LightBullet : PlayerConsumable, IProjectile, IConsumable
 
     public override void Consume()
     {
-        GetPlayer().HealPlayer(HealAmount);
+        GameManager.GetPlayer().HealPlayer(HealAmount);
         Destroy(gameObject);
     }
 

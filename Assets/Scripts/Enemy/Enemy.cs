@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
+    const string DAMAGE_SOUND_LABEL = "enemyDamaged";
+    const string DEATH_SOUND_LABEL = "enemyKilled";
+
     /// <summary>
     /// The amount of damage this enemy deals to the player when it collides with it.
     /// </summary>
@@ -16,11 +19,20 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public UnityEvent EnemyDied;
 
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+
     private Health health;
 
     void Awake()
     {
         health = new Health(defaultHealthAmount);
+    }
+
+    void Start()
+    {
+        AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
+        AudioManager.Instance.SetEffect(DEATH_SOUND_LABEL, deathSound);
     }
 
     void Update()
@@ -32,8 +44,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
-            collision.gameObject.GetComponent<PlayerController>()?.playerHealth.Damage(playerCollisionDamage);
-            health.Damage(playerCollisionDamage);
+            GameManager.GetPlayer().DamagePlayer(playerCollisionDamage);
         }
     }
 
@@ -42,6 +53,7 @@ public class Enemy : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag(GameTag.Projectile.ToString()))
         {
             health.Damage(collision.gameObject.GetComponent<Projectile>().damage);
+            AudioManager.Instance.PlayEffect(DAMAGE_SOUND_LABEL);
         }
     }
 
@@ -50,6 +62,7 @@ public class Enemy : MonoBehaviour, IEnemy
         if (IsDead())
         {
             OnDeath?.Invoke();
+            AudioManager.Instance.PlayEffect(DEATH_SOUND_LABEL);
             Destroy(gameObject);
         }
     }

@@ -8,10 +8,6 @@ public abstract class PlayerConsumable : MonoBehaviour, IConsumable
     const string PICKUP_SOUND_LABEL = "pickup";
     public AudioClip pickupSound;
 
-    public PlayerController GetPlayer()
-    {
-        return GameManager.Instance.PlayerController;
-    }
     public abstract void Consume();
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
