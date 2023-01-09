@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy : SceneObject, IEnemy
 {
     const string DAMAGE_SOUND_LABEL = "enemyDamaged";
     const string DEATH_SOUND_LABEL = "enemyKilled";
@@ -35,9 +35,11 @@ public class Enemy : MonoBehaviour, IEnemy
         AudioManager.Instance.SetEffect(DEATH_SOUND_LABEL, deathSound);
     }
 
-    void Update()
+    protected override void Update()
     {
         CheckIfDead();
+
+        base.Update();
     }
 
     void OnCollisionEnter2D(Collision2D collision)

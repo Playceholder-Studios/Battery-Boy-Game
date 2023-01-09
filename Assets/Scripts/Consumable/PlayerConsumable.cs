@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// A consumable that affects the player.
 /// </summary>
-public abstract class PlayerConsumable : MonoBehaviour, IConsumable
+public abstract class PlayerConsumable : SceneObject, IConsumable
 {
     const string PICKUP_SOUND_LABEL = "pickup";
     public AudioClip pickupSound;

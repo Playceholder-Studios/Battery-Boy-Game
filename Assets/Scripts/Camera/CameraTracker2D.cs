@@ -48,6 +48,20 @@ public class CameraTracker2D : MonoBehaviour
     /// </summary>
     private Vector3 velocity = Vector3.zero;
 
+    public static CameraTracker2D Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         cam = GetComponent<Camera>();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IProjectile
+public class Projectile : SceneObject, IProjectile
 {
     #region Public Members
     /// <summary>
@@ -50,11 +50,13 @@ public class Projectile : MonoBehaviour, IProjectile
         AudioManager.Instance.PlayEffect(fireSoundLabel);
     }
 
-    void Update()
+    protected override void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
 
         CheckRange();
+
+        base.Update();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

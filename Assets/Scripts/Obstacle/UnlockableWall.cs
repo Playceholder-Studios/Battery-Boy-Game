@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UnlockableWall : MonoBehaviour, IUnlockable
+public class UnlockableWall : SceneObject, IUnlockable
 {
     const string LOCKED_SOUND_LABEL = "locked";
     const string UNLOCK_SOUND_LABEL = "unlock";

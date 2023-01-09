@@ -8156,22 +8156,22 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 6e-45
-      e01: 6e-45
-      e02: 0.000000022292625
-      e03: 1.43e-43
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
       e10: 0
-      e11: 0
-      e12: 4.5905e-41
-      e13: 4.6e-43
-      e20: 4.5e-44
-      e21: -2.1113207e+28
-      e22: 9.7e-44
-      e23: 8.518625e-10
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
       e30: 0
-      e31: 4.5914e-41
-      e32: 4.62e-43
-      e33: 4.5905e-41
+      e31: 0
+      e32: 0
+      e33: 1
   - m_RefCount: 647
     m_Data:
       e00: 2
@@ -9130,7 +9130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056637167043291526, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_RootOrder
@@ -9219,7 +9219,7 @@ MonoBehaviour:
   playerInput: {fileID: 1331450627}
   PauseMenu: {fileID: 512005752}
   <PlayerController>k__BackingField: {fileID: 1331450621}
-  levelMusic: {fileID: 0}
+  levelMusic: {fileID: 8300000, guid: f3f303bc6f5844b48b17d5a1fd7316af, type: 3}
 --- !u!4 &1586650640
 Transform:
   m_ObjectHideFlags: 0
@@ -9412,6 +9412,10 @@ PrefabInstance:
       propertyPath: damageSound
       value: 
       objectReference: {fileID: 8300000, guid: 341773ce2fd334faa986c62137389b4b, type: 3}
+    - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: playerCollisionDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
       propertyPath: m_RootOrder
       value: 1

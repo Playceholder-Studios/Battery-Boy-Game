@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class SplitterBoss : MonoBehaviour
+public class SplitterBoss : SceneObject
 {
     private void Start()
     {
         
     }
 
-    private void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 }

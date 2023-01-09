@@ -49,7 +49,7 @@ public class LightBullet : PlayerConsumable, IProjectile, IConsumable
         m_initialPosition = transform.position;
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (!hasStopped)
         {
@@ -70,6 +70,8 @@ public class LightBullet : PlayerConsumable, IProjectile, IConsumable
         {
             Destroy(gameObject);
         }
+
+        base.Update();
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)

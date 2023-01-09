@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 /// <summary>
 /// Controls player movement.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : SceneObject
 {
     const string FOOTSTEPS_SOUND_LABEL = "footsteps";
     const string FIRE_SOUND_LABEL = "fireProjectile";
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (m_fireRateTimer > 0)
         {
@@ -114,6 +114,8 @@ public class PlayerController : MonoBehaviour
             keyHolder.SetActive(true);
         }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
+
+        base.Update();
     }
 
     /// <summary>

@@ -21,10 +21,12 @@ public class CyberColossus : Enemy
         startingPosition = transform.position;
     }
 
-    private void Update()
+    protected override void Update()
     {
         transform.position = LerpToTarget(MovementTarget[currentTargetIndex].transform.position);
         CheckIfTargetReached();
+
+        base.Update();
     }
 
     private void ResetTargetMovement()
