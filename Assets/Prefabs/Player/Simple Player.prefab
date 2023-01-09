@@ -685,6 +685,7 @@ MonoBehaviour:
   keyHolder: {fileID: 2040961341}
   footstepsSound: {fileID: 8300000, guid: da7c0d461eb13a041b87af142731d720, type: 3}
   fireSound: {fileID: 8300000, guid: fe9d2e4b7fba24a4580d3f02939f0120, type: 3}
+  damageSound: {fileID: 0}
   playerMaxHealth: 10
   playerMaxProjectile: 10
 --- !u!114 &1331450618

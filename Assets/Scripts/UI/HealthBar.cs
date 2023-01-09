@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
+    public RectTransform rectTransform;
+    public float m_maxWidth;
 
-    public void SetMaxHealth(int health) 
+    private void Awake()
     {
-        slider.maxValue = health;
-        slider.value = health;
-    } 
-    public void SetHealth(int health) 
+        rectTransform = GetComponent<RectTransform>();
+        m_maxWidth = rectTransform.rect.xMax;
+    }
+
+    private void Update()
     {
-        slider.value = health;
+        UpdateHealthUI();
+    }
+
+    private void UpdateHealthUI()
+    {
+        float playerHealthPercentage = (float)GameManager.Instance.PlayerController.playerHealth.CurrentHealth / GameManager.Instance.PlayerController.playerHealth.MaxHealth;
+        rectTransform.sizeDelta = new Vector2(m_maxWidth * playerHealthPercentage, rectTransform.rect.height);
     }
 }

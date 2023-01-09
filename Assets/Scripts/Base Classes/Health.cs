@@ -3,7 +3,7 @@ public class Health : IHealth
 {
     public int CurrentHealth { get; private set; }
 
-    private int MaxHealth;
+    public int MaxHealth { get; private set; }
 
     private const int DefaultMaxHealth = 1;
 
