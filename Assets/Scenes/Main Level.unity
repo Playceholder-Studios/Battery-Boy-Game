@@ -9369,6 +9369,7 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 3acc004b8852546eda45909255c21487, type: 3}
   fireRate: 0.1
   duration: 2
+  powerUpMusic: {fileID: 8300000, guid: 8d1db4226efd34c21b68993cf8b4e587, type: 3}
 --- !u!58 &1979857208
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9412,6 +9413,10 @@ PrefabInstance:
       propertyPath: damageSound
       value: 
       objectReference: {fileID: 8300000, guid: 341773ce2fd334faa986c62137389b4b, type: 3}
+    - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eef62a63f21614b6a979c66656129f76, type: 3}
     - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
       propertyPath: playerCollisionDamage
       value: 1

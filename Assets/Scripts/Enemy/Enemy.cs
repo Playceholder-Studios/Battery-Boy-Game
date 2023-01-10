@@ -6,6 +6,7 @@ public class Enemy : SceneObject, IEnemy
 {
     const string DAMAGE_SOUND_LABEL = "enemyDamaged";
     const string DEATH_SOUND_LABEL = "enemyKilled";
+    const string COLLISION_SOUND_LABEL = "enemyCollided";
 
     /// <summary>
     /// The amount of damage this enemy deals to the player when it collides with it.
@@ -21,6 +22,7 @@ public class Enemy : SceneObject, IEnemy
 
     public AudioClip damageSound;
     public AudioClip deathSound;
+    public AudioClip collisionSound;
 
     private Health health;
 
@@ -33,6 +35,7 @@ public class Enemy : SceneObject, IEnemy
     {
         AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
         AudioManager.Instance.SetEffect(DEATH_SOUND_LABEL, deathSound);
+        AudioManager.Instance.SetEffect(COLLISION_SOUND_LABEL, collisionSound);
     }
 
     protected override void Update()
@@ -47,6 +50,7 @@ public class Enemy : SceneObject, IEnemy
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
             GameManager.GetPlayer().DamagePlayer(playerCollisionDamage);
+            AudioManager.Instance.PlayEffect(COLLISION_SOUND_LABEL);
         }
     }
 

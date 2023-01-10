@@ -82,6 +82,11 @@ public class AudioManager : MonoBehaviour
         EffectsSources[label]?.Play();
     }
 
+    public void LoopEffect(string label)
+    {
+        EffectsSources[label].loop = true;
+    }
+
     // Stops clip playback
     public void StopEffect(string label)
     {
