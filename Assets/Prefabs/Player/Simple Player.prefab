@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
+  invulnWindow: 1
   moveSpeed: 80
   smoothFactor: 0.825
   projectile: {fileID: 1837701735503989958, guid: 6312402d2cb3e4945914f4704061a97c, type: 3}

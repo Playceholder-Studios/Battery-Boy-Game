@@ -45,12 +45,19 @@ public class Enemy : SceneObject, IEnemy
         base.Update();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
+        {
+            AudioManager.Instance.PlayEffect(COLLISION_SOUND_LABEL);
+        }
+    }
+
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
             GameManager.GetPlayer().DamagePlayer(playerCollisionDamage, DamageType.Enemy);
-            AudioManager.Instance.PlayEffect(COLLISION_SOUND_LABEL);
         }
     }
 

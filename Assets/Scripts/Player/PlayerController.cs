@@ -68,6 +68,9 @@ public class PlayerController : SceneObject
     private float m_projectileSize = 1.5f;
 
     private float iframes = 0;
+    private float spriteBlinkingTimer = 0.0f;
+    public float spriteBlinkingMiniDuration = 0.1f;
+    public SpriteRenderer spriteRenderer;
     
     /// <summary>
     /// The amount the players health goes down when a projectile is shot
@@ -103,7 +106,12 @@ public class PlayerController : SceneObject
 
         if (iframes > 0)
         {
+            SpriteBlinkingEffect(true);
             iframes -= Time.deltaTime;
+        }
+        else 
+        {
+            SpriteBlinkingEffect(false);
         }
 
         if (CanShoot())
@@ -183,9 +191,25 @@ public class PlayerController : SceneObject
         return playerHealth.CurrentHealth > 1 + (m_projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
     }
 
-    private void PlayDamageEffect(DamageType type)
+    private void SpriteBlinkingEffect(bool enable)
     {
-        // change sprite here
+        if(!enable)
+        {
+            spriteRenderer.enabled = true;
+        } 
+        else 
+        {
+            spriteBlinkingTimer += Time.deltaTime;
+            if(spriteBlinkingTimer >= spriteBlinkingMiniDuration)
+            {
+                spriteBlinkingTimer = 0.0f;
+                if (spriteRenderer.enabled == true) {
+                    spriteRenderer.enabled = false;
+                } else {
+                    spriteRenderer.enabled = true;
+                }
+            }
+        }
     }
 
     public void DamagePlayer(int amount, DamageType dmgType)
@@ -202,8 +226,6 @@ public class PlayerController : SceneObject
             {
                 OnProjectileUpdate(playerHealth.CurrentHealth);
             }
-
-            PlayDamageEffect(dmgType);
         }
     }
 
