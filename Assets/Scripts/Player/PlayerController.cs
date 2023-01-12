@@ -19,6 +19,9 @@ public class PlayerController : SceneObject
     [Range(0.0f, 10.0f)]
     public float fireRate;
 
+    [Range(0.0f, 10.0f)]
+    public float invulnWindow;
+
     /// <summary>
     /// Momement speed.
     /// </summary>
@@ -63,6 +66,8 @@ public class PlayerController : SceneObject
     private float m_defaultFireRate;
     private float m_fireRateTimer;
     private float m_projectileSize = 1.5f;
+
+    private float iframes = 0;
     
     /// <summary>
     /// The amount the players health goes down when a projectile is shot
@@ -94,6 +99,11 @@ public class PlayerController : SceneObject
         if (m_fireRateTimer > 0)
         {
             m_fireRateTimer -= Time.deltaTime;
+        }
+
+        if (iframes > 0)
+        {
+            iframes -= Time.deltaTime;
         }
 
         if (CanShoot())
@@ -180,17 +190,21 @@ public class PlayerController : SceneObject
 
     public void DamagePlayer(int amount, DamageType dmgType, bool playEffect = true)
     {
-        if (playEffect) 
+        if (iframes <= 0)
         {
-            AudioManager.Instance.PlayEffect(DAMAGE_SOUND_LABEL);
-        }
-        playerHealth.Damage(amount);
-        if (OnProjectileUpdate != null)
-        {
-            OnProjectileUpdate(playerHealth.CurrentHealth);
-        }
+            iframes = invulnWindow;
+            if (playEffect) 
+            {
+                AudioManager.Instance.PlayEffect(DAMAGE_SOUND_LABEL);
+            }
+            playerHealth.Damage(amount);
+            if (OnProjectileUpdate != null)
+            {
+                OnProjectileUpdate(playerHealth.CurrentHealth);
+            }
 
-        PlayDamageEffect(dmgType);
+            PlayDamageEffect(dmgType);
+        }
     }
 
     public void HealPlayer(int amount)
