@@ -49,7 +49,7 @@ public class Enemy : SceneObject, IEnemy
     {
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()))
         {
-            GameManager.GetPlayer().DamagePlayer(playerCollisionDamage);
+            GameManager.GetPlayer().DamagePlayer(playerCollisionDamage, DamageType.Enemy);
             AudioManager.Instance.PlayEffect(COLLISION_SOUND_LABEL);
         }
     }

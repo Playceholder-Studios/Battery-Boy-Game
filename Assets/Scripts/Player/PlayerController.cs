@@ -101,7 +101,7 @@ public class PlayerController : SceneObject
             Vector3 projectileSpawnLocation = transform.position + m_inputFireVector * 2;
             GameObject obj = Instantiate(projectile, projectileSpawnLocation, Quaternion.identity);
             Projectile pj = obj.GetComponent<Projectile>();
-            DamagePlayer(m_projectileHealthDamage, false);
+            DamagePlayer(m_projectileHealthDamage, DamageType.PlayerSelf, false);
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
             pj?.SetFireSound(FIRE_SOUND_LABEL);     
@@ -173,7 +173,12 @@ public class PlayerController : SceneObject
         return playerHealth.CurrentHealth > 1 + (m_projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
     }
 
-    public void DamagePlayer(int amount, bool playEffect = true)
+    private void PlayDamageEffect(DamageType type)
+    {
+        // change sprite here
+    }
+
+    public void DamagePlayer(int amount, DamageType dmgType, bool playEffect = true)
     {
         if (playEffect) 
         {
@@ -184,6 +189,8 @@ public class PlayerController : SceneObject
         {
             OnProjectileUpdate(playerHealth.CurrentHealth);
         }
+
+        PlayDamageEffect(dmgType);
     }
 
     public void HealPlayer(int amount)
