@@ -232,7 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55289509
 GameObject:
@@ -318,7 +318,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &55289513
 MonoBehaviour:
@@ -1257,7 +1257,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &512005751
 PrefabInstance:
@@ -1577,7 +1577,7 @@ Transform:
   m_Children:
   - {fileID: 78432210}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610842810
 GameObject:
@@ -8333,7 +8333,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &786954603
 GameObject:
@@ -8529,7 +8529,7 @@ Transform:
   m_Children:
   - {fileID: 513074769}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &879870737 stripped
 SpriteRenderer:
@@ -8720,7 +8720,7 @@ Transform:
   m_Children:
   - {fileID: 1317875966}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191515125
 GameObject:
@@ -8766,7 +8766,7 @@ Transform:
   - {fileID: 171972098}
   - {fileID: 610842811}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317875965
 GameObject:
@@ -9116,7 +9116,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1560865858
 PrefabInstance:
@@ -9139,7 +9139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9347,7 +9347,7 @@ Transform:
   m_Children:
   - {fileID: 786954604}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979857206
 GameObject:
@@ -9413,7 +9413,7 @@ Transform:
   m_Children:
   - {fileID: 1518726066}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2023821172
 PrefabInstance:
@@ -9496,7 +9496,92 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808173, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
       propertyPath: m_Name
-      value: Chasing Oil Demon
+      value: Chasing Oil Demon 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+--- !u!1001 &2059773216
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 341773ce2fd334faa986c62137389b4b, type: 3}
+    - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eef62a63f21614b6a979c66656129f76, type: 3}
+    - target: {fileID: 2401700988871808166, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: playerCollisionDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808167, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808168, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ca6a9d89c0133a41a8fe7075b8132d7, type: 3}
+    - target: {fileID: 2401700988871808170, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_Radius
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808170, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808170, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808173, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: m_Name
+      value: Chasing Oil Demon 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
@@ -9517,7 +9602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2507828027645603569, guid: 5daf3479947772b4eac86cdd999378ca, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2507828027645603569, guid: 5daf3479947772b4eac86cdd999378ca, type: 3}
       propertyPath: m_LocalPosition.x
