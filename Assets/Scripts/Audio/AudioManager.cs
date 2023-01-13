@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
         EffectsSources = new Dictionary<string, AudioSource>();
     }
 
-    public void SetEffect(string label, AudioClip clip)
+    public void SetEffect(string label, AudioClip clip, bool loop = false)
     {
     	AudioSource audioSource;
 		// c# sucks
@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour
 			audioSource = gameObject.AddComponent<AudioSource>();
 		}
         audioSource.clip = clip;
+        audioSource.loop = loop;
         EffectsSources[label] = audioSource;
     }
 

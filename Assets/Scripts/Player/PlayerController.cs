@@ -71,6 +71,8 @@ public class PlayerController : SceneObject
     private float spriteBlinkingTimer = 0.0f;
     public float spriteBlinkingMiniDuration = 0.1f;
     public SpriteRenderer spriteRenderer;
+
+    private bool moving = false;
     
     /// <summary>
     /// The amount the players health goes down when a projectile is shot
@@ -92,7 +94,7 @@ public class PlayerController : SceneObject
         m_currentSkill = currentSkill.GetComponent<ISkill>();
         m_defaultFireRate = fireRate;
 
-        AudioManager.Instance.SetEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound);
+        AudioManager.Instance.SetEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound, true);
         AudioManager.Instance.SetEffect(FIRE_SOUND_LABEL, fireSound);
         AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
     }
@@ -168,9 +170,14 @@ public class PlayerController : SceneObject
         m_inputMoveVector = value.Get<Vector2>();
         if (m_inputMoveVector == Vector3.zero)
         {
+            moving = false;
             AudioManager.Instance.StopEffect(FOOTSTEPS_SOUND_LABEL);
         } else {
-            AudioManager.Instance.PlayEffect(FOOTSTEPS_SOUND_LABEL);
+            if (!moving) 
+            {
+                moving = true;
+                AudioManager.Instance.PlayEffect(FOOTSTEPS_SOUND_LABEL);
+            }
         }
     }
 
