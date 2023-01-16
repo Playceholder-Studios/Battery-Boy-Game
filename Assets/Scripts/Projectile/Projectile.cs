@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Projectile : SceneObject, IProjectile
 {
@@ -33,16 +35,22 @@ public class Projectile : SceneObject, IProjectile
     /// </summary>
     public string fireSoundLabel;
 
+    public GameObject source;
+
     #endregion Public Properties
 
     #region Private Members
     private Vector3 m_initialPosition;
     #endregion Private Members
 
+    public List<GameTag> collisionTagList;
+    private List<string> tagStringList;
+
     void Awake()
     {
         // Set initial position
         m_initialPosition = transform.position;
+        tagStringList = collisionTagList.Select(t => t.ToString()).ToList();
     }
 
     void Start()
@@ -61,8 +69,8 @@ public class Projectile : SceneObject, IProjectile
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Hits an enemy
-        if (collision.gameObject.CompareTag(GameTag.Enemy.ToString()))
+        // Hits something. hacky and needs more generic typechecking
+        if (collision.gameObject != source && tagStringList.Contains(collision.gameObject.tag))
         {
             Destroy(gameObject);
         }

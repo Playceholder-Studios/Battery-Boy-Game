@@ -4,7 +4,6 @@ public class CyberColossus : Enemy
 {
     public GameObject[] MovementTarget;
     private PlayerController player;
-    private Transform currentTarget;
     private int currentTargetIndex;
     private int movementTargetCount;
 
@@ -13,7 +12,7 @@ public class CyberColossus : Enemy
     private Vector3 startingPosition;
     public float timeToLerpInSeconds = 10;
 
-    private void Start()
+    protected override void Start()
     {
         player = GameManager.GetPlayer();
         ResetTargetMovement();
@@ -21,24 +20,16 @@ public class CyberColossus : Enemy
         startingPosition = transform.position;
     }
 
-    protected override void Update()
+    protected override void Move()
     {
-        transform.position = LerpToTarget(MovementTarget[currentTargetIndex].transform.position);
+        transform.position = Vector3.Lerp(startingPosition, MovementTarget[currentTargetIndex].transform.position, timeLerpElapsed / timeToLerpInSeconds);
+        timeLerpElapsed += Time.deltaTime;
         CheckIfTargetReached();
-
-        base.Update();
     }
 
     private void ResetTargetMovement()
     {
         currentTargetIndex = 0;
-    }
-
-    private Vector3 LerpToTarget(Vector3 target)
-    {
-        Vector3 currentPosition = Vector3.Lerp(startingPosition, target, timeLerpElapsed / timeToLerpInSeconds);
-        timeLerpElapsed += Time.deltaTime;
-        return currentPosition;
     }
 
     private void CheckIfTargetReached()

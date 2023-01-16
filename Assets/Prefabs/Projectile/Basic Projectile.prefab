@@ -127,9 +127,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   direction: {x: 0, y: 0}
-  range: 3
+  range: 6
   size: 1
   speed: 6
+  fireSoundLabel: 
+  source: {fileID: 0}
+  collisionTagList: 0000000001000000
 --- !u!50 &13249797078192478
 Rigidbody2D:
   serializedVersion: 4

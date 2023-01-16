@@ -167,3 +167,5 @@ MonoBehaviour:
   size: 2
   speed: 10
   fireSoundLabel: 
+  source: {fileID: 0}
+  collisionTagList: 01000000

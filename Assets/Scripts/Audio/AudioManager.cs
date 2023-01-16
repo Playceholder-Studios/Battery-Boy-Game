@@ -80,9 +80,14 @@ public class AudioManager : MonoBehaviour
     // Play a single clip through the sound effects source.
     public void PlayEffect(string label)
     {
-        Debug.Log("Playing " + label);
-        EffectsSources[label]?.Play();
-        Debug.Log("Played " + label);
+        try 
+        {
+            EffectsSources[label]?.Play();
+        }
+        catch
+        {
+            Debug.LogWarningFormat("Sound for {0} not found", label);
+        }
     }
 
     public void LoopEffect(string label)

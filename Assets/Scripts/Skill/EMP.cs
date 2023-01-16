@@ -17,9 +17,9 @@ public class EMP : Skill
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<ChaseTarget>() != null)
+        if (other.GetComponent<Enemy>() != null)
         {
-            var enemy = other.GetComponent<ChaseTarget>();
+            var enemy = other.GetComponent<Enemy>();
             var dirToMove = Vector3.Normalize(other.transform.position - transform.position);
             enemy.MoveToTarget(other.transform.position + (dirToMove * strength), 10.0f, true);
             gameObject.SetActive(false);

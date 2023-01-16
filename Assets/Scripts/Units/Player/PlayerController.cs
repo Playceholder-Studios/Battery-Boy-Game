@@ -125,6 +125,7 @@ public class PlayerController : SceneObject
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
             pj?.SetFireSound(FIRE_SOUND_LABEL);     
+            pj.source = this.gameObject;
 
             m_fireRateTimer = fireRate;
         }
@@ -136,6 +137,18 @@ public class PlayerController : SceneObject
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
 
         base.Update();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(GameTag.Projectile.ToString()))
+        {
+            Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+            if (!projectile.source.CompareTag(GameTag.Player.ToString())) 
+            {
+                DamagePlayer(projectile.damage, DamageType.Enemy);
+            }
+        }
     }
 
     /// <summary>
