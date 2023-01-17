@@ -4,15 +4,19 @@ using UnityEngine;
 public class EMP : Skill
 {
     public float strength = 1.0f;
+    public GameObject empParticleSystem;
+    private ParticleSystem ps;
 
     public override void Activate()
     {
         gameObject.SetActive(true);
+        ps?.Play();
     }
 
     private void Awake()
     {
         gameObject.SetActive(false);
+        ps = empParticleSystem.GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
