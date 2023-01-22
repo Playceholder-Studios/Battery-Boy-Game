@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4344702397403984008}
-  - component: {fileID: 4344702397403984010}
   - component: {fileID: 4344702397403984011}
+  - component: {fileID: 6971926702213629963}
   m_Layer: 0
   m_Name: EMP
   m_TagString: Untagged
@@ -34,22 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4344702397403984010
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4344702397403984009}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.75
 --- !u!114 &4344702397403984011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1c7a5454f9b99419183af13c4d7276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 1
+  pushStrength: 1
   empParticleSystem: {fileID: 6244295798239718439}
+--- !u!58 &6971926702213629963
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344702397403984009}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9
 --- !u!1001 &3716134009068247928
 PrefabInstance:
   m_ObjectHideFlags: 0

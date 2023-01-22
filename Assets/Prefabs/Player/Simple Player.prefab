@@ -689,6 +689,8 @@ MonoBehaviour:
   damageSound: {fileID: 0}
   playerMaxHealth: 10
   playerMaxProjectile: 10
+  spriteBlinkingMiniDuration: 0.1
+  spriteRenderer: {fileID: 0}
 --- !u!114 &1331450618
 MonoBehaviour:
   m_ObjectHideFlags: 0
