@@ -55,7 +55,10 @@ public class Projectile : SceneObject, IProjectile
 
     void Start()
     {
-        AudioManager.Instance.PlayEffect(fireSoundLabel);
+        if (fireSoundLabel != "")
+        {
+            AudioManager.Instance.PlayEffect(fireSoundLabel);
+        }
     }
 
     protected override void Update()

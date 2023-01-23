@@ -74,10 +74,6 @@ public class LightBullet : PlayerConsumable, IProjectile, IConsumable
         base.Update();
     }
 
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-    }
-
     public override void Consume()
     {
         GameManager.GetPlayer().HealPlayer(HealAmount);

@@ -26,6 +26,8 @@ public class Enemy : SceneObject, IEnemy
     public AudioClip deathSound;
     public AudioClip collisionSound;
 
+    public PlayerConsumable[] drops;
+
     protected Health health;
 
     [NonSerialized]
@@ -118,7 +120,16 @@ public class Enemy : SceneObject, IEnemy
         {
             OnDeath?.Invoke();
             AudioManager.Instance.PlayEffect(DEATH_SOUND_LABEL);
+            GenerateDrops();
             Destroy(gameObject);
+        }
+    }
+
+    private void GenerateDrops()
+    {
+        foreach (PlayerConsumable drop in drops)
+        {
+            drop.Spawn(transform.position);
         }
     }
 
