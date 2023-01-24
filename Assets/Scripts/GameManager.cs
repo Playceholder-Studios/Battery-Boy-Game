@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         playerInput.actions["Pause"].started += Pause;
+        playerInput.actions["Mute"].started += ToggleMusic;
     }
 
     private void OnDisable()
@@ -61,8 +62,13 @@ public class GameManager : MonoBehaviour
 
     private void Pause(CallbackContext ctx)
     {
-        AudioManager.Instance.ToggleMusic();
+        ToggleMusic(ctx);
         m_pauseMenu?.TogglePause();
+    }
+
+    private void ToggleMusic(CallbackContext ctx)
+    {
+        AudioManager.Instance.ToggleMusic();
     }
 
     public void EndGame()
