@@ -44,6 +44,16 @@
                 {
                     "name": "Mute",
                     "type": "Button",
+                    "id": "7d69fb18-35f6-44ab-8119-b5ec7befb638",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "3b43df00-80db-4fab-b7d7-d340b077b092",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -306,6 +316,7 @@
                 },
                 {
                     "name": "",
+                    "id": "7d7194be-a7da-4a8d-9823-3b979505703e",
                     "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
@@ -322,6 +333,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9188f42d-3aac-4b1c-a7be-2372e216edc7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bf906a8-8050-4ab9-ac11-25c235727a21",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
