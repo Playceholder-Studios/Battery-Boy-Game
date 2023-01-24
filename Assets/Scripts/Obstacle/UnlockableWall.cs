@@ -22,7 +22,6 @@ public class UnlockableWall : SceneObject, IUnlockable
             if (player.hasKey)
             {
                 Unlock();
-                player.keyHolder.SetActive(false);
                 player.hasKey = false;
             }
             else {

@@ -21,6 +21,7 @@ public class FireRateUpgrade : PlayerConsumable
     public override void Consume()
     {
         GameManager.GetPlayer().UpdateFireRate(fireRate);
+        GameManager.GetPlayer().projectileHealthDamage = 0;
         GameObject timerObject = new GameObject();
         timer = timerObject.AddComponent<Timer>();
         timer.SetTimer(duration, isDestroyedOnEnd: true);
@@ -33,6 +34,7 @@ public class FireRateUpgrade : PlayerConsumable
     private void UpgradeDurationEnd()
     {
         GameManager.GetPlayer().ResetFireRate();
+        GameManager.GetPlayer().ResetProjectileSelfDamage();
         AudioManager.Instance.StopEffect(POWER_UP_MUSIC_LABEL);
     }
 }

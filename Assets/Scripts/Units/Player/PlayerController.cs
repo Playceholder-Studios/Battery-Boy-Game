@@ -34,12 +34,12 @@ public class PlayerController : SceneObject
     [Range(0.0f, 1.0f)]
     public float smoothFactor = 0.825f;
 
+    public int defaultProjectileSelfDamage = 1;
+
     public bool hasKey { get; set; }
 
     public GameObject projectile;
-
     public GameObject currentSkill;
-
     public GameObject keyHolder;
 
     public AudioClip footstepsSound;
@@ -77,7 +77,7 @@ public class PlayerController : SceneObject
     /// <summary>
     /// The amount the players health goes down when a projectile is shot
     /// </summary>
-    private int m_projectileHealthDamage = 1;
+    public int projectileHealthDamage;
     private ISkill m_currentSkill;
     #endregion Private Members
 
@@ -97,15 +97,13 @@ public class PlayerController : SceneObject
         AudioManager.Instance.SetEffect(FOOTSTEPS_SOUND_LABEL, footstepsSound, true);
         AudioManager.Instance.SetEffect(FIRE_SOUND_LABEL, fireSound);
         AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
+
+        ResetProjectileSelfDamage();
     }
 
     protected override void Update()
     {
-        if (m_fireRateTimer > 0)
-        {
-            m_fireRateTimer -= Time.deltaTime;
-        }
-
+        // Damage taken
         if (iframes > 0)
         {
             SpriteBlinkingEffect(true);
@@ -116,12 +114,18 @@ public class PlayerController : SceneObject
             SpriteBlinkingEffect(false);
         }
 
+        // Fire projectile
+        if (m_fireRateTimer > 0)
+        {
+            m_fireRateTimer -= Time.deltaTime;
+        }
+
         if (CanShoot())
         {
             Vector3 projectileSpawnLocation = transform.position + m_inputFireVector * 2;
             GameObject obj = Instantiate(projectile, projectileSpawnLocation, Quaternion.identity);
             Projectile pj = obj.GetComponent<Projectile>();
-            DamagePlayer(m_projectileHealthDamage, DamageType.PlayerSelf);
+            DamagePlayer(projectileHealthDamage, DamageType.PlayerSelf);
             pj?.SetDirection(m_inputFireVector);
             pj?.SetSize(m_projectileSize);
             pj?.SetFireSound(FIRE_SOUND_LABEL);     
@@ -130,9 +134,9 @@ public class PlayerController : SceneObject
             m_fireRateTimer = fireRate;
         }
 
-        if (hasKey)
+        if (hasKey != keyHolder.activeSelf)
         {
-            keyHolder.SetActive(true);
+            keyHolder.SetActive(hasKey);
         }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
 
@@ -208,7 +212,7 @@ public class PlayerController : SceneObject
     private bool CanShoot()
     {
         // m_inputFireVector is updated by OnFire
-        return playerHealth.CurrentHealth > 1 + (m_projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
+        return playerHealth.CurrentHealth > 1 + (projectileHealthDamage - 1) && m_inputFireVector != Vector3.zero && m_fireRateTimer <= 0;
     }
 
     private void SpriteBlinkingEffect(bool enable)
@@ -266,5 +270,10 @@ public class PlayerController : SceneObject
     public void ResetFireRate()
     {
         fireRate = m_defaultFireRate;
+    }
+
+    public void ResetProjectileSelfDamage()
+    {
+        projectileHealthDamage = defaultProjectileSelfDamage;
     }
 }
