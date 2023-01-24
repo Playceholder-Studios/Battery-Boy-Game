@@ -162,7 +162,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: Library
-          key: Library-build-OSX
+          key: Library-build-StandaloneOSX
           restore-keys: |
             Library-build-
             Library-
@@ -173,8 +173,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: build-OSX
-          path: build/OSX
+          name: build-StandaloneOSX
+          path: build/StandaloneOSX
 
   deployPages:
     needs: buildWebGL
