@@ -49,7 +49,6 @@ jobs:
          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
  buildWebGL:
-   needs: testRunner
    name: Build for WebGL 🖥️
    runs-on: ubuntu-latest
    strategy:
@@ -93,7 +92,6 @@ jobs:
          path: build/WebGL
 
  buildWindows:
-   needs: testRunner
    name: Build for Windows
    runs-on: ubuntu-latest
    strategy:
@@ -137,7 +135,6 @@ jobs:
          path: build/StandaloneWindows64
 
  buildMac:
-   needs: testRunner
    name: Build for Mac
    runs-on: ubuntu-latest
    strategy:
