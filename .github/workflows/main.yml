@@ -1,4 +1,4 @@
-name: GameCI Template 🎮
+name: All Builds
 
 on: [push, pull_request]
 
