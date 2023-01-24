@@ -162,19 +162,19 @@ jobs:
         uses: actions/cache@v2
         with:
           path: Library
-          key: Library-build-Android
+          key: Library-build-OSX
           restore-keys: |
             Library-build-
             Library-
 
       - uses: webbertakken/unity-builder@v2
         with:
-          targetPlatform: Mac
+          targetPlatform: StandaloneOSX
 
       - uses: actions/upload-artifact@v2
         with:
-          name: build-Mac
-          path: build/Mac
+          name: build-OSX
+          path: build/OSX
 
   deployPages:
     needs: buildWebGL
