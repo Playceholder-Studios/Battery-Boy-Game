@@ -12,7 +12,6 @@ public class PlayerController : SceneObject
     const string FIRE_SOUND_LABEL = "fireProjectile";
     const string DAMAGE_SOUND_LABEL = "playerDamaged";
 
-    #region Public Members
     /// <summary>
     /// Fire rate.
     /// </summary>
@@ -57,9 +56,7 @@ public class PlayerController : SceneObject
 
     public delegate void IntDel(int projectileCount);
     public event IntDel OnProjectileUpdate;
-    #endregion Public Members
 
-    #region Private Members
     private Vector3 m_inputFireVector;
     private Vector3 m_inputMoveVector;
     private Rigidbody2D m_rigidbody2D;
@@ -79,9 +76,7 @@ public class PlayerController : SceneObject
     /// </summary>
     public int projectileHealthDamage;
     private ISkill m_currentSkill;
-    #endregion Private Members
 
-    #region Unity Lifecycle Methods
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -165,10 +160,6 @@ public class PlayerController : SceneObject
         m_rigidbody2D.velocity *= smoothFactor;
     }
 
-    #endregion Unity Lifecycle Methods
-
-    #region Unity Input Methods
-
     /// <summary>
     /// Handles messages from the Player->Fire action.
     /// </summary>
@@ -206,8 +197,6 @@ public class PlayerController : SceneObject
     {
         m_currentSkill?.Activate();
     }
-
-    #endregion Unity Input Methods
 
     private bool CanShoot()
     {
