@@ -137,6 +137,8 @@ public class PlayerController : SceneObject
         }
         Debug.DrawLine(transform.position, transform.position + (m_inputFireVector * 2f), Color.yellow);
 
+        CheckLife();
+
         base.Update();
     }
 
@@ -271,5 +273,13 @@ public class PlayerController : SceneObject
     public void ResetProjectileSelfDamage()
     {
         projectileHealthDamage = defaultProjectileSelfDamage;
+    }
+
+    public void CheckLife()
+    {
+        if(playerHealth.CurrentHealth <= 0)
+        {
+            GameManager.ActivateGameOver();
+        }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerInput playerInput;
 
-    public GameObject PauseMenu;
+    public PauseMenuController PauseMenu;
 
     /// <summary>
     /// Called when the game ends.
@@ -69,6 +70,11 @@ public class GameManager : MonoBehaviour
     private void ToggleMusic(CallbackContext ctx)
     {
         AudioManager.Instance.ToggleMusic();
+    }
+
+    public static void ActivateGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
     }
 
     public void EndGame()

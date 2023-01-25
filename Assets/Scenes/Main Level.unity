@@ -15662,6 +15662,10 @@ PrefabInstance:
       propertyPath: drops.Array.data[0]
       value: 
       objectReference: {fileID: 4561511287424008133, guid: 6084c595263d5469ab40806ed7336e27, type: 3}
+    - target: {fileID: 4425672216345518981, guid: fee0eb849d9fc41a5950a8b2f26bb62e, type: 3}
+      propertyPath: playerCollisionDamage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee0eb849d9fc41a5950a8b2f26bb62e, type: 3}
 --- !u!1 &1287177101
@@ -16235,7 +16239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1331450627}
-  PauseMenu: {fileID: 512005752}
+  PauseMenu: {fileID: 512005757}
   <PlayerController>k__BackingField: {fileID: 1331450621}
   levelMusic: {fileID: 8300000, guid: 5c0c029e0d11f43a18d7fbeb55fed820, type: 3}
 --- !u!4 &1586650640
@@ -16791,6 +16795,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.39
       objectReference: {fileID: 0}
+    - target: {fileID: 2401700988871808172, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: playerCollisionDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808173, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
       propertyPath: m_Name
       value: Chasing Oil Demon 1
@@ -17029,6 +17037,10 @@ PrefabInstance:
       propertyPath: drops.Array.data[0]
       value: 
       objectReference: {fileID: 1393680455976326285, guid: 376ec77bdf8ee4bbca0c40e2bf9293c4, type: 3}
+    - target: {fileID: 2401700988871808172, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
+      propertyPath: playerCollisionDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808172, guid: 01278feb46ae44a4b90b441c38f4ee11, type: 3}
       propertyPath: EnemyDied.m_PersistentCalls.m_Calls.Array.size
       value: 0

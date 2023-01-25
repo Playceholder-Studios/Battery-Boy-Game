@@ -54,8 +54,6 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-        DontDestroyOnLoad(gameObject);
 
         EffectsSources = new Dictionary<string, AudioSource>();
     }
