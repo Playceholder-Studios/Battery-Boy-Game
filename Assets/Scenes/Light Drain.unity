@@ -6865,18 +6865,18 @@ Tilemap:
       e00: 6e-45
       e01: 6e-45
       e02: -5947136
-      e03: 1.0395959e+10
+      e03: 1.43e-43
       e10: 0
       e11: 0
       e12: 4.5905e-41
-      e13: 6.85e-43
+      e13: 7.38e-43
       e20: 4.5e-44
       e21: -2.545754e-15
       e22: 9.7e-44
       e23: -229537.98
       e30: 0
       e31: 4.591e-41
-      e32: 4.5905e-41
+      e32: 3.76e-42
       e33: 4.5905e-41
   - m_RefCount: 647
     m_Data:
@@ -7014,7 +7014,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 1.25
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -7104,7 +7104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotLight: {fileID: 1500015628}
+  currentChargeCount: 0
   charges: 3
+  healAmount: 1
   defaultPointLightOuterRadius: 0
   defaultIntensity: 0
 --- !u!58 &1500015631
@@ -7236,7 +7238,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000

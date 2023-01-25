@@ -45,6 +45,8 @@ public class PlayerController : SceneObject
     public AudioClip fireSound;
     public AudioClip damageSound;
 
+    public IInteractable currentInteractable;
+
     [InspectorName("Max Player Health")]
     public int playerMaxHealth = 10;
 
@@ -196,6 +198,11 @@ public class PlayerController : SceneObject
     private void OnSkill(InputValue value)
     {
         m_currentSkill?.Activate();
+    }
+
+    private void OnInteract(InputValue value)
+    {
+        currentInteractable?.Interact();
     }
 
     private bool CanShoot()
