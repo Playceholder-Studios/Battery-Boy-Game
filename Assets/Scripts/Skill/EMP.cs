@@ -20,14 +20,15 @@ public class EMP : Skill
         col = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<Enemy>() != null)
         {
             var enemy = other.GetComponent<Enemy>();
             var dirToMove = Vector3.Normalize(other.transform.position - transform.position);
             enemy.MoveToTarget(other.transform.position + (dirToMove * pushStrength), 10.0f, true);
-            col.enabled = false;
         }
+
+        col.enabled = false;
     }
 }
