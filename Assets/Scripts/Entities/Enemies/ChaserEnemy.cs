@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class ChaserEnemy : Enemy
 {
-    /// <summary>
-    /// The target to move towards
-    /// </summary>
-    public Transform target;
     
     /// <summary>
     /// The maximum amount of time this game object should wait
@@ -27,8 +23,6 @@ public class ChaserEnemy : Enemy
 
     public bool shouldOnlyMoveWhenAggroed = false;
 
-    public CircleRangeChecker aggroRange;
-
     private float stopTimer = 0f;
 
     protected override void Start()
@@ -37,7 +31,7 @@ public class ChaserEnemy : Enemy
         {
             target = GameObject.FindGameObjectWithTag(GameTag.Player.ToString()).transform;
         }
-        currentTarget = target.position;
+        movementTarget = new Vector3();
         currentSpeed = defaultSpeed;
         
         base.Start();
@@ -50,7 +44,7 @@ public class ChaserEnemy : Enemy
         if (stopTimer <= 0)
         {
             stopTimer = Random.Range(0f, maxWaitInterval);
-            base.MoveToTarget(currentTarget, currentSpeed, true);
+            base.MoveToTarget(movementTarget, currentSpeed, true);
         }
 
         base.Update();
@@ -58,14 +52,13 @@ public class ChaserEnemy : Enemy
 
     protected override void Move()
     {
-        if (isMoving && (!shouldOnlyMoveWhenAggroed || aggroRange.IsInRange))
+        if (isMoving && (!shouldOnlyMoveWhenAggroed || base.isInRange(target.position)))
         {
-            transform.position = Vector3.MoveTowards(base.transform.position, base.currentTarget, base.currentSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(base.transform.position, base.target.position, base.currentSpeed * Time.deltaTime);
             base.moveTimer -= Time.deltaTime;
             if (base.moveTimer <= 0)
             {
                 base.isMoving = false;
-                base.currentTarget = target.position;
                 base.currentSpeed = defaultSpeed;
             }
         }

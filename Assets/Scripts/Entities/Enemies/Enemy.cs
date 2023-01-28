@@ -29,12 +29,16 @@ public class Enemy : SceneObject, IEnemy
     public PlayerConsumable[] drops;
 
     protected Health health;
+    public float aggroRange;
+    public Transform target;
 
     [NonSerialized]
     public bool isMoving = false;
     protected float moveTimer = 0f;
-    protected Vector3 currentTarget;
+    public Vector3 movementTarget;
     protected float currentSpeed;
+
+    private Rigidbody2D body;
 
     void Awake()
     {
@@ -46,6 +50,8 @@ public class Enemy : SceneObject, IEnemy
         AudioManager.Instance.SetEffect(DAMAGE_SOUND_LABEL, damageSound);
         AudioManager.Instance.SetEffect(DEATH_SOUND_LABEL, deathSound);
         AudioManager.Instance.SetEffect(COLLISION_SOUND_LABEL, collisionSound);
+
+        body = GetComponent<Rigidbody2D>();
     }
 
     protected override void Update()
@@ -90,12 +96,12 @@ public class Enemy : SceneObject, IEnemy
     {
         if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget, currentSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, movementTarget, currentSpeed * Time.deltaTime);
             moveTimer -= Time.deltaTime;
             if (moveTimer <= 0)
             {
                 isMoving = false;
-                currentTarget = new Vector3();
+                movementTarget = new Vector3();
                 currentSpeed = 0f;
             }
         }
@@ -105,7 +111,7 @@ public class Enemy : SceneObject, IEnemy
     {
         if (resetMoveTimer) moveTimer = GetTimeToMove();
         isMoving = true;
-        currentTarget = target;
+        movementTarget = target;
         currentSpeed = speed;
     }
 
@@ -137,5 +143,9 @@ public class Enemy : SceneObject, IEnemy
     {
         if (health == null) return true;
         return health.CurrentHealth <= 0;
+    }
+
+    protected bool isInRange(Vector3 target) {
+        return (target - transform.position).magnitude <= aggroRange;
     }
 }

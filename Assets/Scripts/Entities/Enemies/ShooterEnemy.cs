@@ -8,12 +8,18 @@ public class ShooterEnemy : Enemy
     GameObject bullet;
 
     public float fireRate = 1f;
+    public Vector3 angle;
+    public bool shouldTargetPlayer;
     private float cooldownTimer;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         cooldownTimer = fireRate;
+        if (shouldTargetPlayer && target == null)
+        {
+            target = GameObject.FindGameObjectWithTag(GameTag.Player.ToString()).transform;
+        }
 
         base.Start();
     }
@@ -22,6 +28,10 @@ public class ShooterEnemy : Enemy
     protected override void Update()
     {
         CheckIfTimeToFire();
+        if(target != null)
+        {
+            angle = (target.position - transform.position).normalized;
+        }
 
         base.Update();
     }
@@ -29,10 +39,11 @@ public class ShooterEnemy : Enemy
     void CheckIfTimeToFire() 
     {
         cooldownTimer -= Time.deltaTime;
+        bool targetInRange = target == null || isInRange(target.position);
         if (cooldownTimer <= 0) 
         {
             Projectile pj = Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            pj?.SetDirection(new Vector3(-1, 0, 0));
+            pj?.SetDirection(angle);
             pj.range = 4;
             pj?.SetSize(1f);
             pj.source = this.gameObject;
