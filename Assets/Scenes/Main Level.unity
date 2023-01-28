@@ -157,7 +157,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -16191,7 +16191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1560865858
 PrefabInstance:
@@ -16200,17 +16200,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7912484138886532099, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.9
+      value: -17.58
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -7.39
       objectReference: {fileID: 0}
     - target: {fileID: 8130137372301275360, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17196,7 +17200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2507828027645603569, guid: 5daf3479947772b4eac86cdd999378ca, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2507828027645603569, guid: 5daf3479947772b4eac86cdd999378ca, type: 3}
       propertyPath: m_LocalPosition.x
