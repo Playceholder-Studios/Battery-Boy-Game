@@ -22,7 +22,7 @@ public class GameOverMenuController : MonoBehaviour
 
     void RestartGameButtonPressed()
     {
-        SceneManager.LoadScene("Main Level");
+        SceneManager.LoadScene("Level 0");
     }
 
     void QuitGameButtonPressed()
