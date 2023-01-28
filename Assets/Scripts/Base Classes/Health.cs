@@ -34,4 +34,9 @@ public class Health : IHealth
     {
         CurrentHealth = healthAmount;
     }
+    
+    public bool IsFull()
+    {
+        return CurrentHealth == MaxHealth;
+    }
 }

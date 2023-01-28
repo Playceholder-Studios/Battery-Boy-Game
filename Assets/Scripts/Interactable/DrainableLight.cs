@@ -17,6 +17,7 @@ public class DrainableLight : MonoBehaviour, IInteractable
     public int healAmount = 1;
     public float defaultPointLightOuterRadius;
     public float defaultIntensity;
+    public bool recharges;
     private float pointLightOuterRadiusIncrement
     {
         get
