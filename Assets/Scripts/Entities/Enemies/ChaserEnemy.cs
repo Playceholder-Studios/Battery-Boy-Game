@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ChaserEnemy : Enemy
 {
-    
     /// <summary>
     /// The maximum amount of time this game object should wait
     /// before moving towards the target.
@@ -54,11 +53,12 @@ public class ChaserEnemy : Enemy
     {
         if (isMoving && (!shouldOnlyMoveWhenAggroed || base.isInRange(target.position)))
         {
-            transform.position = Vector3.MoveTowards(base.transform.position, base.target.position, base.currentSpeed * Time.deltaTime);
+            body.position = Vector3.MoveTowards(base.transform.position, base.movementTarget, base.currentSpeed * Time.deltaTime);
             base.moveTimer -= Time.deltaTime;
             if (base.moveTimer <= 0)
             {
                 base.isMoving = false;
+                base.movementTarget = target.position;
                 base.currentSpeed = defaultSpeed;
             }
         }

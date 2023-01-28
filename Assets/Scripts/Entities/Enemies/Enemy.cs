@@ -38,11 +38,12 @@ public class Enemy : SceneObject, IEnemy
     public Vector3 movementTarget;
     protected float currentSpeed;
 
-    private Rigidbody2D body;
+    protected Rigidbody2D body;
 
     void Awake()
     {
         health = new Health(defaultHealthAmount);
+        body = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()
@@ -96,7 +97,7 @@ public class Enemy : SceneObject, IEnemy
     {
         if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, movementTarget, currentSpeed * Time.deltaTime);
+            body.position = Vector3.MoveTowards(transform.position, movementTarget, currentSpeed * Time.deltaTime);
             moveTimer -= Time.deltaTime;
             if (moveTimer <= 0)
             {
