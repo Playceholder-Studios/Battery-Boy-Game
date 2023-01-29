@@ -147,7 +147,7 @@ public class PlayerController : SceneObject
         if (collision.gameObject.CompareTag(GameTag.Projectile.ToString()))
         {
             Projectile projectile = collision.gameObject.GetComponent<Projectile>();
-            if (!projectile.source.CompareTag(GameTag.Player.ToString())) 
+            if (projectile.source != null && !projectile.source.CompareTag(GameTag.Player.ToString())) 
             {
                 DamagePlayer(projectile.damage, DamageType.Enemy);
             }
