@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4344702397403984008}
   - component: {fileID: 4344702397403984011}
   - component: {fileID: 6971926702213629963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,6 +71,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4344702397403984008}
     m_Modifications:
+    - target: {fileID: 1665116961, guid: 16974b4a8809ddb4ba8268b73dd5fa88, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7294263221685860184, guid: 16974b4a8809ddb4ba8268b73dd5fa88, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -126,6 +130,10 @@ PrefabInstance:
     - target: {fileID: 7294263221685860191, guid: 16974b4a8809ddb4ba8268b73dd5fa88, type: 3}
       propertyPath: m_Name
       value: EMP Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294263221685860191, guid: 16974b4a8809ddb4ba8268b73dd5fa88, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16974b4a8809ddb4ba8268b73dd5fa88, type: 3}

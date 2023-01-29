@@ -15216,14 +15216,14 @@ Tilemap:
       e10: 0
       e11: 0
       e12: 4.5904e-41
-      e13: 4.58e-43
+      e13: 4.51e-43
       e20: 4.5e-44
-      e21: 7.5584754e-22
+      e21: -8.790867e-13
       e22: 9.7e-44
       e23: -2.8610691e+20
       e30: 0
-      e31: 4.5912e-41
-      e32: 4.61e-43
+      e31: 4.5911e-41
+      e32: 4.54e-43
       e33: 4.5904e-41
   - m_RefCount: 1059
     m_Data:
@@ -15651,11 +15651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808167, guid: fee0eb849d9fc41a5950a8b2f26bb62e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.96
+      value: -6.89
       objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808167, guid: fee0eb849d9fc41a5950a8b2f26bb62e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.14
+      value: -7.01
       objectReference: {fileID: 0}
     - target: {fileID: 2401700988871808167, guid: fee0eb849d9fc41a5950a8b2f26bb62e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16200,6 +16200,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3550230467207951489, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550230467207951489, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511995713978299473, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604451830786517039, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7912484138886532099, guid: 166bbb39718790f4494401fe9d3705bc, type: 3}
       propertyPath: m_Enabled
       value: 0

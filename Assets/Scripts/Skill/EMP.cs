@@ -10,7 +10,10 @@ public class EMP : Skill
 
     public override void Activate()
     {
-        col.enabled = true;
+        if (col != null)
+        {
+            col.enabled = true;
+        }
         ps?.Play();
     }
 
