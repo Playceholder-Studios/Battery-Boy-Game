@@ -71,6 +71,9 @@ public class PlayerController : SceneObject
     public float spriteBlinkingMiniDuration = 0.1f;
     public SpriteRenderer spriteRenderer;
 
+    public int currentLevel = 1;
+    public int expToNext = 10;
+
     private bool moving = false;
     
     /// <summary>
@@ -280,6 +283,16 @@ public class PlayerController : SceneObject
         if(playerHealth.CurrentHealth <= 0)
         {
             GameManager.ActivateGameOver();
+        }
+    }
+
+    public void GainExp(int expAmount)
+    {
+        expToNext -= expAmount;
+        while (expToNext <= 0) 
+        {
+            currentLevel += 1;
+            expToNext += 5 + (currentLevel * 5);
         }
     }
 }

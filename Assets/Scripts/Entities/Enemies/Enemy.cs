@@ -17,6 +17,8 @@ public class Enemy : SceneObject, IEnemy
 
     public int defaultHealthAmount = 1;
 
+    public int expAmount;
+
     [field: SerializeField]
     public Action OnDeath;
 
@@ -127,6 +129,7 @@ public class Enemy : SceneObject, IEnemy
         {
             OnDeath?.Invoke();
             AudioManager.Instance.PlayEffect(DEATH_SOUND_LABEL);
+            GameManager.GetPlayer().GainExp(expAmount);
             GenerateDrops();
             Destroy(gameObject);
         }
