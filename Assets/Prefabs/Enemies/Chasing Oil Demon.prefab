@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1623420852840412212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07, y: -0.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2401700988871808167}
   m_RootOrder: 0
@@ -153,9 +153,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.023590565}
+  m_Offset: {x: -0.03, y: 0.39}
   serializedVersion: 2
-  m_Radius: 0.6918702
+  m_Radius: 1
 --- !u!114 &2401700988871808172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
   target: {fileID: 0}
   movementTarget: {x: 0, y: 0, z: 0}
   maxWaitInterval: 1.6
-  maxMoveTime: 0.724
-  defaultSpeed: 1
+  maxMoveTime: 1.013
+  defaultSpeed: 15
   shouldChasePlayer: 1
   shouldOnlyMoveWhenAggroed: 0
 --- !u!50 &5477721538573895141

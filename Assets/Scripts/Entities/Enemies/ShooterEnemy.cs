@@ -40,7 +40,7 @@ public class ShooterEnemy : Enemy
     {
         cooldownTimer -= Time.deltaTime;
         bool targetInRange = target == null || isInRange(target.position);
-        if (cooldownTimer <= 0) 
+        if (cooldownTimer <= 0 && targetInRange) 
         {
             Projectile pj = Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<Projectile>();
             pj?.SetDirection(angle);

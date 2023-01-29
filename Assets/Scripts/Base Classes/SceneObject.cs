@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-public class SceneObject : MonoBehaviour
+public abstract class SceneObject : MonoBehaviour
 {
     public const float MAX_Y = 10000;
     public const float MIN_Y = -10000;
