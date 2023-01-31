@@ -18,18 +18,12 @@ public class ChaserEnemy : Enemy
     
     public float defaultSpeed = 1.0f;
 
-    public bool shouldChasePlayer = false;
-
     public bool shouldOnlyMoveWhenAggroed = false;
 
     private float stopTimer = 0f;
 
     protected override void Start()
     {
-        if (shouldChasePlayer && target == null)
-        {
-            target = GameObject.FindGameObjectWithTag(GameTag.Player.ToString()).transform;
-        }
         movementTarget = new Vector3();
         currentSpeed = defaultSpeed;
         
@@ -51,16 +45,17 @@ public class ChaserEnemy : Enemy
 
     protected override void Move()
     {
-        if (isMoving && (!shouldOnlyMoveWhenAggroed || base.isInRange(target.position)))
+        if (target != null && isMoving && (!shouldOnlyMoveWhenAggroed || base.isInRange(target.position)))
         {
             body.position = Vector3.MoveTowards(base.transform.position, base.movementTarget, base.currentSpeed * Time.deltaTime);
             base.moveTimer -= Time.deltaTime;
             if (base.moveTimer <= 0)
             {
                 base.isMoving = false;
-                base.movementTarget = target.position;
                 base.currentSpeed = defaultSpeed;
             }
+        } else if (target != null) {
+            base.movementTarget = target.position;
         }
     }
 

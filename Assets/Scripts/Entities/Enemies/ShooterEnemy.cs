@@ -16,10 +16,6 @@ public class ShooterEnemy : Enemy
     protected override void Start()
     {
         cooldownTimer = fireRate;
-        if (shouldTargetPlayer && target == null)
-        {
-            target = GameObject.FindGameObjectWithTag(GameTag.Player.ToString()).transform;
-        }
 
         base.Start();
     }
@@ -28,7 +24,7 @@ public class ShooterEnemy : Enemy
     protected override void Update()
     {
         CheckIfTimeToFire();
-        if(target != null)
+        if(shouldTargetPlayer && target != null)
         {
             angle = (target.position - transform.position).normalized;
         }
@@ -39,7 +35,7 @@ public class ShooterEnemy : Enemy
     void CheckIfTimeToFire() 
     {
         cooldownTimer -= Time.deltaTime;
-        bool targetInRange = target == null || isInRange(target.position);
+        bool targetInRange = !shouldTargetPlayer || (target != null && isInRange(target.position));
         if (cooldownTimer <= 0 && targetInRange) 
         {
             Projectile pj = Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<Projectile>();

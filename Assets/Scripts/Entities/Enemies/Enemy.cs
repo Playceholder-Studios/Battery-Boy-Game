@@ -149,7 +149,15 @@ public class Enemy : SceneObject, IEnemy
         return health.CurrentHealth <= 0;
     }
 
-    protected bool isInRange(Vector3 target) {
-        return (target - transform.position).magnitude <= aggroRange;
+    protected bool isInRange(Vector3 _target) {
+        return (_target - transform.position).magnitude <= aggroRange;
+    }
+
+    public void SetTarget(Transform _target)
+    {
+        if (target == null)
+        {
+            target = _target;
+        }
     }
 }
