@@ -26,7 +26,7 @@ public class AmbientLight : MonoBehaviour, IInteractable
         defaultPointLightOuterRadius = spotLight.pointLightOuterRadius;
         defaultIntensity = spotLight.intensity;
 
-        healTick = healRate;
+        healTick = 1/healRate;
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -35,7 +35,7 @@ public class AmbientLight : MonoBehaviour, IInteractable
         if (collision.gameObject.CompareTag(GameTag.Player.ToString()) && healTick <= 0 && !GameManager.GetPlayer().playerHealth.IsFull())
         {
             GameManager.GetPlayer().HealPlayer(healAmount);
-            healTick = healRate;
+            healTick = 1/healRate;
         }
     }
 }

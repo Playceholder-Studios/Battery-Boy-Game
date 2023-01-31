@@ -195,8 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotLight: {fileID: 0}
-  currentChargeCount: 0
-  healAmount: 1
-  healRate: 1
+  healAmount: 2
+  healRate: 1.5
   defaultPointLightOuterRadius: 0
   defaultIntensity: 0

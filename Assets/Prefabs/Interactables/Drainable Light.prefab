@@ -180,10 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotLight: {fileID: 4988865116359946036}
   currentChargeCount: 0
-  charges: 3
-  healAmount: 1
+  charges: 10
+  healAmount: 3
   defaultPointLightOuterRadius: 0
   defaultIntensity: 0
+  recharges: 0
 --- !u!58 &4988865116359946039
 CircleCollider2D:
   m_ObjectHideFlags: 0
